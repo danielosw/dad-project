@@ -1,0 +1,29 @@
+.theme-switcher {
+	@apply inline-flex;
+	@apply items-center;
+	@apply gap-1;
+	@apply rounded-lg;
+	@apply border;
+	@apply p-1;
+	background-color: var(--default-bg-color);
+	border-color: var(--border-color);
+}
+
+.theme-switcher__button {
+	@apply rounded-md;
+	@apply px-3;
+	@apply py-1.5;
+	@apply text-sm;
+	@apply font-medium;
+	@apply transition;
+	color: var(--default-text-color);
+}
+
+.theme-switcher__button:hover {
+	background-color: var(--border-color);
+}
+
+.theme-switcher__button[data-active='true'] {
+	background-color: var(--default-text-color);
+	color: var(--default-bg-color);
+}
