@@ -2,7 +2,6 @@
 @plugin '@tailwindcss/forms';
 @import "$lib/css/app.css";
 
-
 .menu {
 	@apply grid-center;
 	@apply self-center;
@@ -45,14 +44,7 @@
 
 
 
-@utility small-button {
-	@apply px-4;
-	@apply py-2;
-	color: var(--default-text-color);
-	@apply text-center;
-	border-radius: 0.5rem;
-	display: block;
-}
+
 
 .link-item {
 	background-color: #0f172a;

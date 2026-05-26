@@ -1,7 +1,6 @@
 <script lang="ts">
 	import "$lib/css/dropdown.css";
 
-
 	interface Props {
 		children?: import("svelte").Snippet;
 	}
@@ -42,7 +41,7 @@
 			</svg>
 		</label>
 		<nav class="nav-menu">
-			<ul class="wrapper1">
+			<ul>
 				{@render children?.()}
 			</ul>
 		</nav>

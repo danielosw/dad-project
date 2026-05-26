@@ -7,6 +7,7 @@
 	--default-bg-color: rgba(255, 255, 255, 1);
 	--border-color: rgba(0, 0, 0, 0.1);
 	--color-scheme: light;
+	--link-color: #646cff;
 }
 
 :root[data-theme='dark'] {
@@ -14,8 +15,39 @@
 	--default-bg-color: rgba(36, 36, 36, 1);
 	--border-color: rgba(255, 255, 255, 0.1);
 	--color-scheme: dark;
+	--link-color: #646cff;
+	--hover-link-color: #535bf2;
+}
+@utility base-button {
+	@apply rounded-sm;
+
+	@apply text-sm;
+	@apply font-medium;
+	border: 1px solid var(--border-color);
+	background-color: var(--default-bg-color);
+	color: var(--default-text-color);
+}
+@utility small-button {
+
+	@apply px-3;
+	@apply py-1.5;
+	@apply base-button;
+
+
 }
 
+@utility big-button {
+	@apply px-7;
+	@apply py-3.5;
+	@apply base-button;
+
+}
+@utility medium-button {
+	
+	@apply px-5;
+	@apply py-2.5;
+	@apply base-button;
+}
 @layer base {
 	*,
 	::after,
@@ -49,10 +81,10 @@ body {
 
 a {
 	font-weight: 500;
-	color: #646cff;
+	color: var(--link-color);
 	text-decoration: inherit;
 
 	&:hover {
-		color: #535bf2;
+		color: var(--hover-link-color);
 	}
 }
