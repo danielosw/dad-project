@@ -1,8 +1,8 @@
 <script lang="ts">
-	import '$lib/css/theme-switcher.css';
-	import { setTheme, themeOptions, themePreference } from '$lib/stores/theme';
+	import "$lib/css/theme-switcher.css";
+	import { setTheme, themeOptions, themePreference } from "$lib/stores/theme";
 
-	let { className = '' }: { className?: string } = $props();
+	let { className = "" }: { className?: string } = $props();
 </script>
 
 <div class={`theme-switcher ${className}`} role="group" aria-label="Theme">
