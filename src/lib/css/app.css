@@ -6,11 +6,13 @@
 	--default-text-color: rgba(0, 0, 0, 0.87);
 	--default-bg-color: rgba(255, 255, 255, 1);
 	--border-color: rgba(0, 0, 0, 0.1);
+	--color-scheme: light;
 }
 @theme dark {
 	--default-text-color: rgba(255, 255, 255, 0.87);
 	--default-bg-color: rgba(36, 36, 36, 1);
 	--border-color: rgba(255, 255, 255, 0.1);
+	--color-scheme: dark;
 }
 
 @layer base {
@@ -28,7 +30,7 @@
 	line-height: 1.5;
 	font-weight: 400;
 
-	color-scheme: dark;
+	color-scheme: var(--color-scheme, dark);
 	color: var(--default-text-color);
 	background-color: var(--default-bg-color);
 
