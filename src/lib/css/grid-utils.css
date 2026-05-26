@@ -1,0 +1,26 @@
+@utility grid-center {
+	@apply grid;
+	@apply justify-center;
+	@apply items-center;
+}
+
+@utility grid-center-x {
+	@apply justify-center;
+}
+
+@utility grid-center-y {
+	@apply items-center;
+}
+
+@utility grid-stack {
+	@apply grid;
+	@apply grid-flow-row;
+}
+@utility grid-column {
+	@apply grid;
+	@apply grid-flow-col;
+}
+@utility grid-auto-fit {
+	@apply grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
