@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "$lib/css/grid-utils.css";
 
 /* setup themes, text color, bg color vars */
 @theme light {
@@ -44,15 +44,6 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
-}
-
-@utility centergrid {
-	@apply grid;
-	@apply justify-center;
-	@apply self-center;
-	@apply items-center;
-	@apply text-center;
-	@apply relative;
 }
 
 a {
