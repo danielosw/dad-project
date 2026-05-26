@@ -41,6 +41,7 @@
 		"globals": "^17.4.0",
 		"playwright": "^1.59.1",
 		"postcss": "^8.5.15",
+		"postcss-calc": "^10.1.1",
 		"postcss-preset-env": "^11.3.0",
 		"postgres": "^3.4.9",
 		"svelte": "^5.55.2",
