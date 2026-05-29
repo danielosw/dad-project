@@ -1,11 +1,11 @@
-import { dev } from '$app/environment';
+
 import { getRequestEvent } from '$app/server';
 import { env } from '$env/dynamic/private';
 import { betterAuth } from 'better-auth/minimal';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { db } from '$lib/server/db';
-
+let dev = false;
 export const auth = betterAuth({
 	baseURL: dev ? undefined : env.ORIGIN,
 	secret: env.BETTER_AUTH_SECRET,
