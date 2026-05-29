@@ -1,5 +1,4 @@
 
-import { dev } from '$app/environment';
 import { getRequestEvent } from '$app/server';
 import { env } from '$env/dynamic/private';
 import { betterAuth } from 'better-auth/minimal';
@@ -8,7 +7,7 @@ import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { db } from '$lib/server/db';
 
 export const auth = betterAuth({
-	baseURL: dev ? undefined : env.ORIGIN,
+	baseURL: env.BETTER_AUTH_URL,
 	secret: env.BETTER_AUTH_SECRET,
 	database: drizzleAdapter(db, { provider: 'pg' }),
 	emailAndPassword: { enabled: true },
