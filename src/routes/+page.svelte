@@ -14,12 +14,7 @@
         </p>
         <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
             <a class="small-button border" href={resolve("/login")}>Login</a>
-            <a
-                class="small-button border"
-                href="https://svelte.dev/tutorial/kit">Tutorial</a
-            >
-            <a class="small-button border" href="https://svelte.dev/examples"
-                >Examples</a
+            <a class="small-button border" href={resolve("/account")}>Account</a
             >
         </div>
         <NavMenu />
