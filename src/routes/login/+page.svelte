@@ -13,7 +13,7 @@
              * A URL to redirect after the user authenticates with the provider
              * @default "/"
              */
-            callbackURL: "/account",
+            callbackURL: "/",
             /**
              * A URL to redirect if an error occurs during the sign in process
              */

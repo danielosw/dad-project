@@ -8,7 +8,7 @@
         await authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    window.location.href = "/login";
+                    window.location.href = "/";
                 },
             },
         });
@@ -23,7 +23,12 @@
                 : "You are not logged in."}
         </p>
         <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
-            <button class="small-button border" onclick={logout}>Logout</button>
+            <!-- --- hide logout button if not logged in --- -->
+            {#if data?.user.email}
+                <button class="small-button border" onclick={logout}
+                    >Logout</button
+                >
+            {/if}
         </div>
 
         <NavMenu />
