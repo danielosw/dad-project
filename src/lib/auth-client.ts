@@ -1,9 +1,12 @@
-import { createAuthClient } from "better-auth/client"
-const authClient = createAuthClient()
+import { createAuthClient } from 'better-auth/svelte';
 
-const signIn = async () => {
-    const data = await authClient.signIn.social({
-        provider: "github"
-    })
-}
-export { authClient, signIn }
+const authClient = createAuthClient();
+
+const signIn = async (callbackURL = '/demo/better-auth') => {
+    await authClient.signIn.social({
+        provider: 'github',
+        callbackURL
+    });
+};
+
+export { authClient, signIn };
