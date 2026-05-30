@@ -1,6 +1,5 @@
 <script lang="ts">
     import NavMenu from "$lib/components/NavMenu.svelte";
-    import { createAuthClient } from "better-auth/client";
     import { authClient } from "$lib/auth-client";
     const signInWithGitHub = async () => {
         await authClient.signIn.social({
