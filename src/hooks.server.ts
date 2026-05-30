@@ -10,7 +10,10 @@ const handleBetterAuth: Handle = async ({ event, resolve }) => {
 		event.locals.session = session.session;
 		event.locals.user = session.user;
 	}
-
+	// if we do not have a logged in user, disallow acces to account page and redirect to login page
+	else if (event.url.pathname === '/account') {
+		return Response.redirect('/login')
+	}
 	return svelteKitHandler({ event, resolve, auth, building });
 };
 

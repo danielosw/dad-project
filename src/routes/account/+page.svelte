@@ -1,7 +1,6 @@
 <script lang="ts">
     import NavMenu from "$lib/components/NavMenu.svelte";
     import { authClient } from "$lib/auth-client";
-    import { redirect } from "@sveltejs/kit";
     const session = authClient.useSession();
     const data = $session.data;
     const logout = async () => {
@@ -13,9 +12,6 @@
             },
         });
     };
-    if (data == null) {
-        redirect(307, "/login");
-    }
 </script>
 
 <main class="grid-center min-h-screen px-6">
