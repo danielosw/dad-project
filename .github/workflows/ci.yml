@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Save test and build cache
-        if: always()
+        if: success() && steps.test-build-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v4
         with:
           path: |
