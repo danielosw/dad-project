@@ -44,4 +44,4 @@ jobs:
             node_modules/.vite
             node_modules/.vitest
             .svelte-kit
-          key: ${{ steps.test-build-cache.outputs.cache-primary-key }}
+          key: ${{ runner.os }}-test-cache-${{ hashFiles('package-lock.json') }}
