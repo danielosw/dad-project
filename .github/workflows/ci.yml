@@ -20,7 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Restore test and build cache
-        uses: actions/cache@v4
+        id: test-build-cache
+        uses: actions/cache/restore@v4
         with:
           path: |
             node_modules/.vite
@@ -35,3 +36,12 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+      - name: Save test and build cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            node_modules/.vite
+            node_modules/.vitest
+            .svelte-kit
+          key: ${{ steps.test-build-cache.outputs.cache-primary-key }}
