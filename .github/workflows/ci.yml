@@ -26,7 +26,7 @@ jobs:
             node_modules/.vite
             node_modules/.vitest
             .svelte-kit
-          key: ${{ runner.os }}-node20-test-cache-${{ hashFiles('package-lock.json') }}
+          key: ${{ runner.os }}-test-cache-${{ hashFiles('package-lock.json') }}
       - name: Lint
         run: npm run lint
       - name: Test
