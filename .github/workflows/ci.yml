@@ -28,7 +28,7 @@ jobs:
         run: pnpm ci
       - name: Restore test and build cache
         id: test-build-cache
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: |
             node_modules/.vite
@@ -45,7 +45,7 @@ jobs:
         run: pnpm build
       - name: Save test and build cache
         if: success() && steps.test-build-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         with:
           path: |
             node_modules/.vite
