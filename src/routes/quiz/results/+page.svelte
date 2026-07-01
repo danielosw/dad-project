@@ -2,15 +2,18 @@
     import NavMenu from "$lib/components/NavMenu.svelte";
     import type { PageProps } from "./$types";
 
-    let { data, form }: PageProps = $props();
-    let score = 0;
-    if (form?.result) {
-        form.result.forEach((i) => {
-            if (i.givenAnswer == i.answer) {
-                score++;
-            }
-        });
-    }
+    let { form }: PageProps = $props();
+    let score = $derived.by(() => {
+        let total = 0;
+        if (form?.result) {
+            form.result.forEach((i) => {
+                if (i.givenAnswer == i.answer) {
+                    total++;
+                }
+            });
+        }
+        return total;
+    });
 </script>
 
 <NavMenu />
