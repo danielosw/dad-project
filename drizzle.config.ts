@@ -10,6 +10,7 @@ const caPath = path.resolve('certs/digitalocean-ca.crt');
 export default defineConfig({
 	schema: "./src/lib/server/db/schema.ts",
 	dialect: "postgresql",
+
 	dbCredentials: {
 		host: databaseUrl.hostname,
 		port: Number(databaseUrl.port || '5432'),
@@ -17,7 +18,7 @@ export default defineConfig({
 		password: decodeURIComponent(databaseUrl.password),
 		database: databaseUrl.pathname.replace(/^\//, ''),
 		ssl: {
-			ca: fs.readFileSync(caPath, 'utf8'),
+			ca: [fs.readFileSync(caPath, 'utf8')],
 			rejectUnauthorized: true
 		}
 	},
