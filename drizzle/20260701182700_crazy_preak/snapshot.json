@@ -1,0 +1,201 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "fba36232-a326-456e-8fc7-99b86d2c822c",
+  "prevIds": [
+    "891bbbbe-18df-49c3-8156-eb7b3a99fd7d"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "questions",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "isRlsEnabled": false,
+      "name": "task",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "ga",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "topic",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Question Number",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Question Text",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Answer A",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Answer B",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Answer C",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Answer D",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "Correct Answer",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "task"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "task"
+    },
+    {
+      "type": "integer",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": "1",
+      "generated": null,
+      "identity": null,
+      "name": "priority",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "task"
+    },
+    {
+      "columns": [
+        "ga",
+        "topic",
+        "Question Number"
+      ],
+      "nameExplicit": true,
+      "name": "questions_pk",
+      "entityType": "pks",
+      "schema": "public",
+      "table": "questions"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "task_pkey",
+      "schema": "public",
+      "table": "task",
+      "entityType": "pks"
+    }
+  ],
+  "renames": []
+}
