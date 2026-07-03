@@ -1,14 +1,8 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
-import fs from 'fs';
-import path from 'path';
-let certPath: string = "";
-if (process.env.NODE_ENV === 'production') {
-	certPath = path.resolve(process.cwd(), 'certs/digitalocean-ca.crt');
-}
 const ssl = (process.env.NODE_ENV === 'production') ? {
 	rejectUnauthorized: true,
-	ca: [fs.readFileSync(certPath).toString()]
+	ca: process.env.DIGITAL_OCEAN_CERT,
 } : {
 	rejectUnauthorized: true,
 };
