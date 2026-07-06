@@ -16,7 +16,7 @@
 
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
-        <p class="text-base">
+        <p class="">
             <!-- {data?.user.email
                 ? `You are logged in as ${data.user.email}`
                 : "You are not logged in."} -->

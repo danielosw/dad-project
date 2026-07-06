@@ -20,9 +20,9 @@
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4">
         <h1 class="text-3xl font-semibold text-center">Quiz Results</h1>
-        <p class="text-base text-center">This is the quiz results page.</p>
+        <p class=" text-center">This is the quiz results page.</p>
         {#if form?.result}
-            <p class="text-base text-center">
+            <p class=" text-center">
                 You scored {score} out of {form.result.length}
             </p>
             {#each form.result as result (result.ga + "-" + result.questionNumber + "-" + result.topic)}
@@ -31,16 +31,19 @@
                         Question {result.questionNumber} of Topic: {result.topic}
                         of Group Area: {result.ga}
                     </p>
-                    <p class="text-base">
-                        Your answer: {result.givenAnswer}
+                    <p class="">
+                        Question: {result.question}
                     </p>
-                    <p class="text-base">
-                        Correct answer: {result.answer}
+                    <p class="">
+                        Your answer: {result.givenAnswer} - {result.userAnswerText}
+                    </p>
+                    <p class="">
+                        Correct answer: {result.answer} - {result.correctAnswerText}
                     </p>
                 </div>
             {/each}
         {:else}
-            <p class="text-base text-center">No results available.</p>
+            <p class=" text-center">No results available.</p>
         {/if}
     </section>
 </main>
