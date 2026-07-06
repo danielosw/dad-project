@@ -16,6 +16,7 @@
             <a class="small-button border" href={resolve("/login")}>Login</a>
             <a class="small-button border" href={resolve("/account")}>Account</a
             >
+            <a class="small-button border" href={resolve("/quiz")}>Quiz</a>
         </div>
         <NavMenu />
     </section>
