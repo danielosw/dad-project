@@ -6,7 +6,7 @@
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         <h1 class="text-3xl font-semibold">Welcome to the testing site.</h1>
-        <p class="text-base">
+        <p class="">
             Visit <a
                 class="font-medium underline"
                 href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a
