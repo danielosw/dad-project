@@ -3,6 +3,7 @@ import { db } from '$lib/server/db';
 import { questions } from '$lib/server/db/schema';
 async function getQuizData() {
     // Fetch quiz data from your database 
+    // check if the connection is working
     const result = await db.select({
         ga: questions.ga,
         topic: questions.topic,
