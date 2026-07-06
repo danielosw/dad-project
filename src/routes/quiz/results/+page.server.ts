@@ -2,7 +2,6 @@ import { db } from '$lib/server/db';
 import { questions } from '$lib/server/db/schema';
 import { and, eq } from 'drizzle-orm/sql/expressions/conditions';
 import type { Actions } from './$types';
-import { sql } from 'drizzle-orm/sql';
 
 // define the data type
 type QuizResult = {
