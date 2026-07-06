@@ -27,6 +27,7 @@
 		"auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes"
 	},
 	"devDependencies": {
+		"@better-auth/drizzle-adapter": "1.7.0-rc.1",
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-node": "^5.5.7",
@@ -40,7 +41,9 @@
 		"@typescript-eslint/eslint-plugin": "^8.62.1",
 		"@typescript-eslint/parser": "^8.62.1",
 		"@vitest/browser-playwright": "^4.1.9",
+		"auth": "1.7.0-rc.1",
 		"autoprefixer": "^10.5.2",
+		"better-auth": "1.7.0-rc.1",
 		"drizzle-kit": "1.0.0-rc.4",
 		"drizzle-orm": "1.0.0-rc.4",
 		"eslint": "^10.6.0",
