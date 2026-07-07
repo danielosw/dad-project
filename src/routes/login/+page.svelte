@@ -1,18 +1,21 @@
 <script lang="ts">
     import NavMenu from "$lib/components/NavMenu.svelte";
     import { authClient } from "$lib/auth-client";
+    import { invalidate } from "$app/navigation";
     const signInWithGitHub = async () => {
         await authClient.signIn.social({
             provider: "github",
 
-            callbackURL: "/",
+            callbackURL: "/account",
 
             errorCallbackURL: "/error",
 
-            newUserCallbackURL: "/",
+            newUserCallbackURL: "/account",
 
             disableRedirect: false,
         });
+        invalidate("/account");
+        invalidate("/quiz");
     };
 </script>
 
