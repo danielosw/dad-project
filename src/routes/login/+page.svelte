@@ -1,5 +1,4 @@
 <script lang="ts">
-    import NavMenu from "$lib/components/NavMenu.svelte";
     import { authClient } from "$lib/auth-client";
     import { invalidate } from "$app/navigation";
     const signInWithGitHub = async () => {
@@ -19,7 +18,6 @@
     };
 </script>
 
-<NavMenu />
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         <h1 class="text-3xl font-semibold">Login</h1>
