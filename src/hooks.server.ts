@@ -13,7 +13,7 @@ const handleBetterAuth: Handle = async ({ event, resolve }) => {
 	}
 	// if we do not have a logged in user, disallow acces to account page and redirect to login page
 	else if (disallowedPathsForUnauthenticatedUsers.includes(event.url.pathname)) {
-		//throw redirect(307, '/login');
+		throw redirect(307, '/login');
 	}
 	return svelteKitHandler({ event, resolve, auth, building });
 };
