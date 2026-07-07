@@ -1,6 +1,5 @@
 <script lang="ts">
     import { resolve } from "$app/paths";
-    import NavMenu from "$lib/components/NavMenu.svelte";
 </script>
 
 <main class="grid-center min-h-screen px-6">
@@ -18,6 +17,5 @@
             >
             <a class="small-button border" href={resolve("/quiz")}>Quiz</a>
         </div>
-        <NavMenu />
     </section>
 </main>
