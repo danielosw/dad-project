@@ -5,6 +5,10 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
+	build: {
+		minify: false,
+		sourcemap: true,
+	},
 	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
 	test: {
 		expect: { requireAssertions: true },
