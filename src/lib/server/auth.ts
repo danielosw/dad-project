@@ -16,7 +16,8 @@ export const auth = betterAuth({
         github: {
             clientId: GITHUB_CLIENT_ID,
             clientSecret: GITHUB_CLIENT_SECRET
-        }
+        },
+
 
     },
     plugins: [
