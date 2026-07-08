@@ -6,11 +6,11 @@ import { betterAuth } from 'better-auth/minimal';
 import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
 import { sveltekitCookies } from 'better-auth/svelte-kit';
 import { db } from '$lib/server/db';
-import * as authSchema from '$lib/server/db/auth.schema';
+import * as schema from '$lib/server/db/schema';
 export const auth = betterAuth({
     baseURL: PUBLIC_BETTER_AUTH_URL,
     secret: BETTER_AUTH_SECRET,
-    database: drizzleAdapter(db, { provider: 'pg', schema: authSchema },),
+    database: drizzleAdapter(db, { provider: 'pg', schema: schema },),
     emailAndPassword: { enabled: true },
     socialProviders: {
         github: {

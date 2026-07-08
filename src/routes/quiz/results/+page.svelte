@@ -40,6 +40,9 @@
                     <p class="">
                         Correct answer: {result.answer} - {result.correctAnswerText}
                     </p>
+                    <p class="">
+                        Explanation: {result.reasoning}
+                    </p>
                 </div>
             {/each}
         {:else}
