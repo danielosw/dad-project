@@ -1,0 +1,1 @@
+ALTER TABLE "questions" ALTER COLUMN "reasoning" SET NOT NULL;

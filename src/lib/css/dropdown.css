@@ -7,6 +7,7 @@
 	@apply justify-items-start;
 	width: 100%;
 	height: 100%;
+	/* make all the buttons the same size */
 }
 
 .barwrap {
@@ -15,6 +16,7 @@
 	top: 1.25rem;
 	left: 1.5rem;
 	z-index: 1000;
+	
 }
 
 .droplink {

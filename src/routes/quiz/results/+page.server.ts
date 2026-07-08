@@ -13,6 +13,7 @@ type QuizResult = {
     correctAnswerText: string;
     userAnswerText: string;
     question: string;
+    reasoning: string;
 };
 
 export const actions = {
@@ -39,7 +40,8 @@ export const actions = {
                 answerB: questions.answerB,
                 answerC: questions.answerC,
                 answerD: questions.answerD,
-                question: questions.questionText
+                question: questions.questionText,
+                reasoning: questions.reasoning
             }).from(questions).where(and(eq(questions.ga, i.ga), eq(questions.topic, i.topic), eq(questions.questionNumber, i.questionNumber)));
 
             result = result.concat(temp.map((row) => ({
@@ -52,6 +54,7 @@ export const actions = {
                 correctAnswerText: "A" === row.answer ? row.answerA : "B" === row.answer ? row.answerB : "C" === row.answer ? row.answerC : row.answerD,
                 givenAnswer: i.answer,
                 userAnswerText: "A" === i.answer ? row.answerA : "B" === i.answer ? row.answerB : "C" === i.answer ? row.answerC : row.answerD,
+                reasoning: row.reasoning
             })));
         }
         return {
