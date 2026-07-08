@@ -6,8 +6,8 @@ import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
 	build: {
-		minify: false,
-		sourcemap: true,
+		minify: true,
+		sourcemap: false,
 	},
 	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
 	test: {
