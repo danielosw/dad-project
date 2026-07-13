@@ -8,6 +8,8 @@
 	--border-color: rgba(0, 0, 0, 0.1);
 	--color-scheme: light;
 	--link-color: #646cff;
+		--hover-link-color: #535bf2;
+	--outline-color: rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme='dark'] {
@@ -17,6 +19,13 @@
 	--color-scheme: dark;
 	--link-color: #646cff;
 	--hover-link-color: #535bf2;
+	--outline-color: rgba(255, 255, 255, 0.5);
+}
+@utility outline-custom{
+	@apply outline-2;
+	@apply outline-offset-2;
+	@apply outline-solid;
+	outline-color: var(--outline-color);
 }
 @utility base-button {
 	@apply rounded-sm;
