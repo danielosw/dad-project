@@ -26,7 +26,7 @@
                 You scored {score} out of {form.result.length}
             </p>
             {#each form.result as result (result.ga + "-" + result.questionNumber + "-" + result.topic)}
-                <div class="grid-stack gap-2">
+                <div class="grid-stack gap-2 outline-custom">
                     <p class="text-lg font-medium">
                         Question {result.questionNumber} of Topic: {result.topic}
                         of Group Area: {result.ga}
