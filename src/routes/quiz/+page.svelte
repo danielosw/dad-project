@@ -15,7 +15,8 @@
 
             {#each data.quizData as post (post.ga + "-" + post.questionNumber + "-" + post.topic)}
                 <!-- Display the question and answer options for each post -->
-                <div class="outline-custom">
+                <!-- also make sure they are outlined  and don't touch eachother-->
+                <div class="outline-custom gap-2">
                     <p class="text-lg font-medium">{post.questionText}</p>
                     <div class="grid-stack gap-3">
                         {#each ["A", "B", "C", "D"] as option (option)}
