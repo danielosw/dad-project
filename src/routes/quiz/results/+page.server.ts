@@ -1,7 +1,8 @@
 import { db } from '$lib/server/db';
-import { questions } from '$lib/server/db/schema';
+import { questions, results, resultsToQuestions } from '$lib/server/db/schema';
 import { and, eq } from 'drizzle-orm/sql/expressions/conditions';
 import type { Actions } from './$types';
+import { auth } from '$lib/server/auth';
 
 // define the data type
 type QuizResult = {
@@ -16,12 +17,52 @@ type QuizResult = {
     reasoning: string;
 };
 
+type AnswerSubmission = {
+    ga: string;
+    topic: string;
+    questionNumber: number;
+    answered: string;
+};
+async function createResult(userId: string, submissions: AnswerSubmission[]) {
+    return await db.transaction(async (tx) => {
+        // 1. Insert parent result row (id automatically generated)
+        const [newResult] = await tx
+            .insert(results)
+            .values({
+                userId: userId,
+            })
+            .returning({ id: results.id });
+
+        if (submissions.length === 0) return newResult;
+
+        // 2. Prepare junction entries with what they answered
+        const junctionRows = submissions.map((sub) => ({
+            resultId: newResult.id,
+            ga: sub.ga,
+            topic: sub.topic,
+            questionNumber: sub.questionNumber,
+            answered: sub.answered,
+        }));
+
+        // 3. Batch insert answers
+        await tx.insert(resultsToQuestions).values(junctionRows);
+
+        return {
+            id: newResult.id,
+            userId,
+            answers: submissions,
+        };
+    });
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const actions = {
 
     submitQuiz: async ({ request }) => {
 
         const data = await request.formData();
-
+        const session = await auth.api.getSession({
+            headers: request.headers,
+        });
         const results = Array.from(data.entries()).reduce((acc, [key, value]) => {
             const [ga, questionNumber, topic] = key.split('-');
             acc.push({ ga, questionNumber: parseInt(questionNumber), topic, answer: value.toString() });
@@ -57,6 +98,15 @@ export const actions = {
                 reasoning: row.reasoning
             })));
         }
+        if (session?.user?.id) {
+            await createResult(session.user.id, result.map((r) => ({
+                ga: r.ga,
+                topic: r.topic,
+                questionNumber: r.questionNumber,
+                answered: r.givenAnswer
+            })));
+        }
+
         return {
             result
         };

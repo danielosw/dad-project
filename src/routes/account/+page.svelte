@@ -1,6 +1,8 @@
 <script lang="ts">
     import { authClient } from "$lib/auth-client";
     import type { PageData } from "./$types";
+    import { resolve } from "$app/paths";
+
     const { data } = $props<{ data: PageData }>();
 
     const logout = async () => {
@@ -24,6 +26,10 @@
         <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
             <!-- --- hide logout button if not logged in --- -->
             {#if data.user}
+                <a
+                    class="small-button border"
+                    href={resolve("/account/past_quizzes")}>Past Quizzes</a
+                >
                 <button class="small-button border" onclick={logout}
                     >Logout</button
                 >

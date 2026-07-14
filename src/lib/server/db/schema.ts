@@ -1,10 +1,32 @@
-import { pgTable, text, serial, timestamp, integer, boolean, index, primaryKey, unique } from "drizzle-orm/pg-core"
+import { pgTable, text, serial, timestamp, integer, boolean, index, primaryKey, unique, foreignKey } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 
 // table holding results of one quiz attept for one user
 // questions are in a list and point to the questions table for the correct answer and reasoning
-
+export const results = pgTable("results", {
+	id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+	userId: text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+	createdAt: timestamp("created_at").default(sql`now()`).notNull(),
+	updatedAt: timestamp("updated_at").default(sql`now()`).notNull(),
+}, (table) => [
+	index("results_userId_idx").using("btree", table.userId.asc().nullsLast()),
+]);
+export const resultsToQuestions = pgTable("results_to_questions", {
+	resultId: integer("result_id").notNull().references(() => results.id, { onDelete: "cascade" }),
+	ga: text().notNull(),
+	topic: text().notNull(),
+	questionNumber: integer("question_number").notNull(),
+	// Store the answer choice here
+	answered: text("answered").notNull(),
+}, (table) => [
+	primaryKey({ columns: [table.resultId, table.ga, table.topic, table.questionNumber] }),
+	foreignKey({
+		columns: [table.ga, table.topic, table.questionNumber],
+		foreignColumns: [questions.ga, questions.topic, questions.questionNumber],
+		name: "fk_results_to_questions_question"
+	}).onDelete("cascade")
+]);
 export const account = pgTable("account", {
 	id: text().primaryKey(),
 	accountId: text("account_id").notNull(),
