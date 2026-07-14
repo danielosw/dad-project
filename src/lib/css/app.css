@@ -23,7 +23,7 @@
 }
 @utility outline-custom{
 	@apply outline-2;
-	@apply outline-offset-2;
+	@apply outline-offset-6;
 	@apply outline-solid;
 	outline-color: var(--outline-color);
 }
