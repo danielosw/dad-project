@@ -10,13 +10,17 @@
     <section class="grid-stack gap-4">
         <h1 class="text-3xl font-semibold text-center">Quiz page</h1>
         <p class=" text-center">This is the quiz page.</p>
-        <form method="POST" action="/quiz/results?/submitQuiz">
+        <form
+            method="POST"
+            action="/quiz/results?/submitQuiz"
+            class="grid-stack gap-6"
+        >
             <!-- id is GA+index+topic number-->
 
             {#each data.quizData as post (post.ga + "-" + post.questionNumber + "-" + post.topic)}
                 <!-- Display the question and answer options for each post -->
                 <!-- also make sure they are outlined  and don't touch eachother-->
-                <div class="outline-custom gap-2">
+                <div class="outline-custom">
                     <p class="text-lg font-medium">{post.questionText}</p>
                     <div class="grid-stack gap-3">
                         {#each ["A", "B", "C", "D"] as option (option)}
