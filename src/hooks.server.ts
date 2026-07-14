@@ -14,7 +14,7 @@ const handleBetterAuth: Handle = async ({ event, resolve }) => {
 	}
 	// if we do not have a logged in user, disallow acces to account page and redirect to login page
 	// disable if IS_DEV is set to true in .env file
-	else if (!IS_DEV && disallowedPathsForUnauthenticatedUsers.includes(event.url.pathname)) {
+	else if (IS_DEV != "true" && disallowedPathsForUnauthenticatedUsers.includes(event.url.pathname)) {
 		throw redirect(307, '/login');
 	}
 	return svelteKitHandler({ event, resolve, auth, building });
