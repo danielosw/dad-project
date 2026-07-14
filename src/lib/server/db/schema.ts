@@ -2,6 +2,8 @@ import { pgTable, text, serial, timestamp, integer, boolean, index, primaryKey, 
 import { sql } from "drizzle-orm"
 
 
+// table holding results of one quiz attept for one user
+// questions are in a list and point to the questions table for the correct answer and reasoning
 
 export const account = pgTable("account", {
 	id: text().primaryKey(),

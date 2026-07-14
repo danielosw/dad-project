@@ -14,7 +14,3 @@
 <NavMenu user={data.user} />
 
 {@render children()}
-
-<style>
-	@import "$lib/css/grid-utils.css";
-</style>
