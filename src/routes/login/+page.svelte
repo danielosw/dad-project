@@ -16,6 +16,21 @@
         invalidate("/account");
         invalidate("/quiz");
     };
+    const signInWithGoogle = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+
+            callbackURL: "/account",
+
+            errorCallbackURL: "/error",
+
+            newUserCallbackURL: "/account",
+
+            disableRedirect: false,
+        });
+        invalidate("/account");
+        invalidate("/quiz");
+    };
 </script>
 
 <main class="grid-center min-h-screen px-6">
@@ -24,6 +39,9 @@
         <p class="">This is the login page.</p>
         <button class="medium-button" onclick={signInWithGitHub}
             >Sign in with GitHub</button
+        >
+        <button class="medium-button" onclick={signInWithGoogle}
+            >Sign in with Google</button
         >
     </section>
 </main>

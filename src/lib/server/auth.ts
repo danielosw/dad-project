@@ -1,7 +1,7 @@
 
 import { getRequestEvent } from '$app/server';
 import { PUBLIC_BETTER_AUTH_URL } from '$env/static/public';
-import { BETTER_AUTH_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
+import { BETTER_AUTH_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GOOGLE_CLIENT_SECRET, GOOGLE_CLIENT_ID } from '$env/static/private';
 import { betterAuth } from 'better-auth/minimal';
 import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";
 import { sveltekitCookies } from 'better-auth/svelte-kit';
@@ -17,6 +17,10 @@ export const auth = betterAuth({
             clientId: GITHUB_CLIENT_ID,
             clientSecret: GITHUB_CLIENT_SECRET
         },
+        google: {
+            clientId: GOOGLE_CLIENT_ID,
+            clientSecret: GOOGLE_CLIENT_SECRET
+        }
 
 
     },
