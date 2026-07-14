@@ -1,6 +1,17 @@
 <script lang="ts">
-    import type { PageData } from "../$types";
-    const { data } = $props<{ data: PageData }>();
+    import type { PageProps } from "./$types";
+
+    let { data }: PageProps = $props();
+    // take a result and return the score
+    function getScore(result: (typeof data.pastQuizzes)[number]) {
+        let total = 0;
+        result.answers.forEach((i) => {
+            if (i.answered == i.questionDetails?.correctAnswer) {
+                total++;
+            }
+        });
+        return total;
+    }
 </script>
 
 <main class="grid-center min-h-screen px-6">
@@ -16,7 +27,7 @@
                                 quiz.createdAt,
                             ).toLocaleString()}
                         </p>
-                        <p>Score: {quiz.score}</p>
+                        <p>Score: {getScore(quiz)}</p>
                     </li>
                 {/each}
             </ul>

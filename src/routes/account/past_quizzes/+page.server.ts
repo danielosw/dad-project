@@ -1,20 +1,30 @@
 import type { PageServerLoad } from '../$types';
 import { db } from '$lib/server/db';
-import { results } from '$lib/server/db/schema';
-import { eq } from 'drizzle-orm/sql/expressions/conditions';
 
 export const load: PageServerLoad = async ({ locals }) => {
-    // Fetch past quizzes for the logged-in user from the database
-    // If the user isn't logged in, don't query the database
+    // 1. Return early if the user is not authenticated
     if (!locals.user?.id) {
         return {
             pastQuizzes: [],
             user: null,
         };
     }
-    const pastQuizzes = await db.select()
-        .from(results)
-        .where(eq(results.userId, locals.user.id));
+
+    // 2. Fetch quizzes matching the authenticated user's id
+    const pastQuizzes = await db.query.results.findMany({
+        where: {
+            userId: locals.user.id,
+        },
+        with: {
+            // Pull in the rows from your 'resultsToQuestions' junction table
+            answers: {
+                with: {
+                    // Pull in the actual question details linked via the composite key
+                    questionDetails: true,
+                }
+            }
+        }
+    });
 
     return {
         pastQuizzes,

@@ -11,6 +11,7 @@ export const relations = defineRelations(schema, (r) => ({
 	user: {
 		accounts: r.many.account(),
 		sessions: r.many.session(),
+		results: r.many.results(),
 	},
 	session: {
 		user: r.one.user({
@@ -25,10 +26,35 @@ export const relations = defineRelations(schema, (r) => ({
 			from: r.results.userId,
 			to: r.user.id
 		}),
-	},
-	questions: {
-		// no relations for questions table
+		// Map one result to many rows in your junction table
+		answers: r.many.resultsToQuestions(),
 	},
 
+	resultsToQuestions: {
+		// Relationship back to the parent result
+		result: r.one.results({
+			from: r.resultsToQuestions.resultId,
+			to: r.results.id
+		}),
+		// Relationship to the question using the multi-column composite key
+		questionDetails: r.one.questions({
+			from: [
+				r.resultsToQuestions.ga,
+				r.resultsToQuestions.topic,
+				r.resultsToQuestions.questionNumber
+			],
+			to: [
+				r.questions.ga,
+				r.questions.topic,
+				r.questions.questionNumber
+			]
+		}),
+	},
+
+	// 6. Questions relations (Option B)
+	questions: {
+		// Allows you to find which quizzes a question appeared in if needed
+		resultsLinkages: r.many.resultsToQuestions(),
+	},
 
 }))
