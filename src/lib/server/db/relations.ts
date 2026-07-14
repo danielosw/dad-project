@@ -18,4 +18,12 @@ export const relations = defineRelations(schema, (r) => ({
 			to: r.user.id
 		}),
 	},
+	results: {
+	},
+
+	questions: {
+	},
+
+	resultsToQuestions: {
+	},
 }))
