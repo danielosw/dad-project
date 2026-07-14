@@ -18,12 +18,17 @@ export const relations = defineRelations(schema, (r) => ({
 			to: r.user.id
 		}),
 	},
+
+
 	results: {
+		user: r.one.user({
+			from: r.results.userId,
+			to: r.user.id
+		}),
 	},
-
 	questions: {
+		// no relations for questions table
 	},
 
-	resultsToQuestions: {
-	},
+
 }))
