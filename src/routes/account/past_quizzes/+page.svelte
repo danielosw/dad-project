@@ -10,7 +10,7 @@
                 total++;
             }
         });
-        return total;
+        return (total / result.answers.length) * 100;
     }
 </script>
 
@@ -27,7 +27,7 @@
                                 quiz.createdAt,
                             ).toLocaleString()}
                         </p>
-                        <p>Score: {getScore(quiz)}</p>
+                        <p>Score: {getScore(quiz).toFixed(2)}%</p>
                     </li>
                 {/each}
             </ul>
