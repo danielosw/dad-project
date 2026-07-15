@@ -10,7 +10,7 @@
                 total++;
             }
         });
-        return total / result.answers.length;
+        return total;
     }
 </script>
 
