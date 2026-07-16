@@ -2,7 +2,6 @@
     import { authClient } from "$lib/auth-client";
     import type { PageData } from "./$types";
     import { resolve } from "$app/paths";
-    import { goto } from "$app/navigation";
 
     const { data } = $props<{ data: PageData }>();
 
@@ -27,20 +26,13 @@
         <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
             <!-- --- hide logout button if not logged in --- -->
             {#if data.user}
-                <button
-                    type="button"
-                    class="small-button border button-link"
-                    onclick={() => goto(resolve("/account/past_quizzes"))}
+                <a
+                    class="small-button border"
+                    href={resolve("/account/past_quizzes")}>Past Quizzes</a
                 >
-                    Past Quizzes
-                </button>
-                <button
-                    class="small-button border button-link"
-                    type="button"
-                    onclick={logout}
+                <button class="small-button border" onclick={logout}
+                    >Logout</button
                 >
-                    Logout
-                </button>
             {/if}
         </div>
     </section>
