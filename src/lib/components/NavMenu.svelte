@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { resolve } from "$app/paths";
     import Dropdown from "$lib/components/DropDown.svelte";
     import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
@@ -12,12 +13,44 @@
 
 <Dropdown>
     <li><ThemeSwitcher /></li>
-    <li><a class="small-button" href={resolve("/")}>home</a></li>
+    <li>
+        <button
+            type="button"
+            class="small-button button-link"
+            onclick={() => goto(resolve("/"))}
+        >
+            home
+        </button>
+    </li>
     {#if user}
-        <li><a class="small-button" href={resolve("/account")}>account</a></li>
-        <li><a class="small-button" href={resolve("/quiz")}>quiz</a></li>
+        <li>
+            <button
+                type="button"
+                class="small-button button-link"
+                onclick={() => goto(resolve("/account"))}
+            >
+                account
+            </button>
+        </li>
+        <li>
+            <button
+                type="button"
+                class="small-button button-link"
+                onclick={() => goto(resolve("/quiz"))}
+            >
+                quiz
+            </button>
+        </li>
     {:else}
-        <li><a class="small-button" href={resolve("/login")}>login</a></li>
+        <li>
+            <button
+                type="button"
+                class="small-button button-link"
+                onclick={() => goto(resolve("/login"))}
+            >
+                login
+            </button>
+        </li>
     {/if}
 </Dropdown>
 

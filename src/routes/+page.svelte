@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { resolve } from "$app/paths";
 </script>
 
@@ -7,10 +8,27 @@
         <h1 class="text-3xl font-semibold">Welcome to the testing site.</h1>
 
         <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
-            <a class="small-button border" href={resolve("/login")}>Login</a>
-            <a class="small-button border" href={resolve("/account")}>Account</a
+            <button
+                type="button"
+                class="small-button border button-link"
+                onclick={() => goto(resolve("/login"))}
             >
-            <a class="small-button border" href={resolve("/quiz")}>Quiz</a>
+                Login
+            </button>
+            <button
+                type="button"
+                class="small-button border button-link"
+                onclick={() => goto(resolve("/account"))}
+            >
+                Account
+            </button>
+            <button
+                type="button"
+                class="small-button border button-link"
+                onclick={() => goto(resolve("/quiz"))}
+            >
+                Quiz
+            </button>
         </div>
     </section>
 </main>
