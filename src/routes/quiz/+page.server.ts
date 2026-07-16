@@ -28,8 +28,8 @@ async function getQuizData() {
     }));
     // shuffle the quizData array to randomize the order of the questions
     quizData = quizData.sort(() => Math.random() - 0.5);
-    // keep only 3 for testing
-    quizData = quizData.slice(0, 3);
+    // keep only 10 for testing
+    quizData = quizData.slice(0, 10);
     return quizData;
 }
 
