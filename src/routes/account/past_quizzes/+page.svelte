@@ -28,8 +28,6 @@
                                 `/account/past_quizzes/details/${quiz.id}`,
                             )}
                         >
-                            class="grid-stack gap-2 button-link"
-
                             <p class="text-lg font-medium">
                                 Quiz ID: {quiz.id}
                             </p>
