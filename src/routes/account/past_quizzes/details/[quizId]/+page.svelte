@@ -17,21 +17,39 @@
                 return result.questionDetails?.answerD;
         }
     }
-    function getScore(result: typeof data.quiz) {
-        let total = 0;
-        result.answers.forEach((i) => {
-            if (i.answered == i.questionDetails?.correctAnswer) {
-                total++;
+    let totalScore = $derived.by(() => {
+        if (!data.quiz?.answers) return 0;
+        return data.quiz.answers.filter(
+            (i) => i.answered === i.questionDetails?.correctAnswer,
+        ).length;
+    });
+
+    let categoryScores = $derived.by(() => {
+        const scores: Record<string, { correct: number; total: number }> = {};
+        if (!data.quiz?.answers) return scores;
+
+        data.quiz.answers.forEach((i) => {
+            if (!i.ga) return;
+            if (!scores[i.ga]) {
+                scores[i.ga] = { correct: 0, total: 0 };
             }
+            if (i.answered === i.questionDetails?.correctAnswer) {
+                scores[i.ga].correct++;
+            }
+            scores[i.ga].total++;
         });
-        return total;
-    }
+        return scores;
+    });
 </script>
 
 <main class="grid-center min-h-screen px-6">
     {#if data.quiz?.answers}
         <p class=" text-center">
-            You scored {getScore(data.quiz)} out of {data.quiz.answers.length}
+            You scored {totalScore} out of {data.quiz.answers.length}
+            {#each Object.entries(categoryScores) as [ga, score] (ga)}
+                <br />
+                Group Area: {ga} - {score.correct}/{score.total}
+            {/each}
         </p>
         {#each data.quiz.answers as result (result.ga + "-" + result.questionNumber + "-" + result.topic)}
             <div class="grid-stack outline-custom">

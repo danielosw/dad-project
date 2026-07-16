@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { resolve } from "$app/paths";
     import type { PageProps } from "./$types";
 
@@ -22,10 +23,14 @@
             <ul class="grid-stack gap-2">
                 {#each data.pastQuizzes as quiz (quiz.id)}
                     <li class="grid-stack outline-custom p-4">
-                        <a
-                            href={resolve(
-                                `/account/past_quizzes/details/${quiz.id}`,
-                            )}
+                        <button
+                            type="button"
+                            onclick={() =>
+                                goto(
+                                    resolve(
+                                        `/account/past_quizzes/details/${quiz.id}`,
+                                    ),
+                                )}
                             class="grid-stack gap-2"
                         >
                             <p class="text-lg font-medium">
@@ -38,13 +43,14 @@
                             </p>
                             <p>
                                 Percentage: {(
-                                    getScore(quiz) / quiz.answers.length
+                                    (getScore(quiz) * 100) /
+                                    quiz.answers.length
                                 ).toFixed(2)}%
                             </p>
                             <p>
                                 Score:"{getScore(quiz)}/{quiz.answers.length}"
                             </p>
-                        </a>
+                        </button>
                     </li>
                 {/each}
             </ul>
