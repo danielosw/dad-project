@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { resolve } from "$app/paths";
     import type { PageProps } from "./$types";
 
     let { data }: PageProps = $props();
@@ -21,20 +22,29 @@
             <ul class="grid-stack gap-2">
                 {#each data.pastQuizzes as quiz (quiz.id)}
                     <li class="grid-stack outline-custom p-4">
-                        <p class="text-lg font-medium">Quiz ID: {quiz.id}</p>
-                        <p>
-                            Date Taken: {new Date(
-                                quiz.createdAt,
-                            ).toLocaleString()}
-                        </p>
-                        <p>
-                            Percentage: {(
-                                getScore(quiz) / quiz.answers.length
-                            ).toFixed(2)}%
-                        </p>
-                        <p>
-                            Score:"{getScore(quiz)}/{quiz.answers.length}"
-                        </p>
+                        <a
+                            href={resolve(
+                                `/account/past_quizzes/details/${quiz.id}`,
+                            )}
+                            class="grid-stack gap-2"
+                        >
+                            <p class="text-lg font-medium">
+                                Quiz ID: {quiz.id}
+                            </p>
+                            <p>
+                                Date Taken: {new Date(
+                                    quiz.createdAt,
+                                ).toLocaleString()}
+                            </p>
+                            <p>
+                                Percentage: {(
+                                    getScore(quiz) / quiz.answers.length
+                                ).toFixed(2)}%
+                            </p>
+                            <p>
+                                Score:"{getScore(quiz)}/{quiz.answers.length}"
+                            </p>
+                        </a>
                     </li>
                 {/each}
             </ul>
