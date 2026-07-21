@@ -11,14 +11,6 @@
 		--hover-link-color: #535bf2;
 	--outline-color: rgba(0, 0, 0, 0.5);
 }
-@utility button-link {
-	@apply grid-stack;
-	@apply gap-2;
-	@apply cursor-pointer;
-	@apply focus-visible:outline-2;
-	@apply focus-visible:outline-offset-4;
-
-}
 :root[data-theme='dark'] {
 	--default-text-color: rgba(255, 255, 255, 0.87);
 	--default-bg-color: rgba(36, 36, 36, 1);
@@ -28,6 +20,27 @@
 	--hover-link-color: #535bf2;
 	--outline-color: rgba(255, 255, 255, 0.5);
 }
+/* 
+Defualt to dark theme so stuff does not break without JS
+*/
+:root {
+	--default-text-color: rgba(255, 255, 255, 0.87);
+	--default-bg-color: rgba(36, 36, 36, 1);
+	--border-color: rgba(255, 255, 255, 0.1);
+	--color-scheme: dark;
+	--link-color: #646cff;
+	--hover-link-color: #535bf2;
+	--outline-color: rgba(255, 255, 255, 0.5);
+}
+@utility button-link {
+	@apply grid-stack;
+	@apply gap-2;
+	@apply cursor-pointer;
+	@apply focus-visible:outline-2;
+	@apply focus-visible:outline-offset-4;
+
+}
+
 @utility outline-custom{
 	@apply outline-2;
 	@apply outline-offset-6;

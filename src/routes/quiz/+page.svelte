@@ -42,7 +42,9 @@
                 </div>
             {/each}
             <!-- button to submit the quiz -->
-            <button type="submit" class="small-button">Submit Quiz</button>
+            <button type="submit" class="small-button button-link"
+                >Submit Quiz</button
+            >
         </form>
     </section>
 </main>
