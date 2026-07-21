@@ -8,8 +8,20 @@ export default defineConfig({
 	build: {
 		minify: true,
 		sourcemap: false,
+		license: true,
+		rolldownOptions
+			: {
+			output
+				: {
+				postBanner
+					:
+					'/* See licenses of bundled dependencies at https://seashell-app-y7zvq.ondigitalocean.app/.vite/licenses.md */',
+			},
+		},
+
 	},
 	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
+
 	test: {
 		expect: { requireAssertions: true },
 		projects: [

@@ -25,7 +25,8 @@
 		"db:pull": "drizzle-kit pull",
 		"db:studio": "drizzle-kit studio",
 		"auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes",
-		"db:update": "pnpm db:generate && pnpm db:migrate"
+		"db:update": "pnpm db:generate && pnpm db:migrate",
+		"update-browserslist": "update-browserslist-db"
 	},
 	"devDependencies": {
 		"@better-auth/drizzle-adapter": "1.7.0-rc.1",
@@ -45,6 +46,7 @@
 		"auth": "1.7.0-rc.1",
 		"autoprefixer": "^10.5.4",
 		"better-auth": "1.7.0-rc.1",
+		"caniuse-lite": "^1.0.30001806",
 		"drizzle-kit": "1.0.0-rc.4",
 		"drizzle-orm": "1.0.0-rc.4",
 		"eslint": "^10.7.0",
@@ -63,6 +65,7 @@
 		"tailwindcss": "^4.3.3",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.65.0",
+		"update-browserslist-db": "^1.2.3",
 		"vite": "^8.1.5",
 		"vitest": "^4.1.10",
 		"vitest-browser-svelte": "^2.2.1"
