@@ -13,6 +13,7 @@
 			class="theme-switcher__button"
 			data-active={isActive}
 			aria-pressed={isActive}
+			aria-label={`Switch to ${option.label} theme`}
 			onclick={() => setTheme(option.value)}
 		>
 			{option.label}
