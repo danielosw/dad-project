@@ -15,6 +15,9 @@
     }
 </script>
 
+<svelte:head>
+    <title>Past quizzes</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         {#if data.pastQuizzes.length > 0}

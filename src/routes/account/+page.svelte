@@ -16,6 +16,9 @@
     };
 </script>
 
+<svelte:head>
+    <title>Account Page</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         <p class="">
