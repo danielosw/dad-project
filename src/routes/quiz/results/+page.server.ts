@@ -54,6 +54,15 @@ async function createResult(userId: string, submissions: AnswerSubmission[]) {
         };
     });
 }
+async function calculateScore(result: QuizResult[]): Promise<number> {
+    let total = 0;
+    result.forEach((r) => {
+        if (r.givenAnswer === r.answer) {
+            total++;
+        }
+    });
+    return total;
+}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const actions = {
 
@@ -106,9 +115,10 @@ export const actions = {
                 answered: r.givenAnswer
             })));
         }
+        const score = await calculateScore(result);
 
         return {
-            result
+            result, score
         };
 
     }
