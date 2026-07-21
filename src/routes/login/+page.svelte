@@ -33,6 +33,9 @@
     };
 </script>
 
+<svelte:head>
+    <title>Login Page</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         <h1 class="text-3xl font-semibold">Login</h1>

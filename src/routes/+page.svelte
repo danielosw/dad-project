@@ -2,6 +2,9 @@
     import { resolve } from "$app/paths";
 </script>
 
+<svelte:head>
+    <title>Main Page</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4 text-center">
         <h1 class="text-3xl font-semibold">Welcome to the testing site.</h1>

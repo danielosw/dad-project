@@ -17,6 +17,9 @@
 </script>
 
 <NavMenu />
+<svelte:head>
+    <title>Quiz Results</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-6">
         <h1 class="text-3xl font-semibold text-center">Quiz Results</h1>

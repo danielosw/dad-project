@@ -6,6 +6,9 @@
 </script>
 
 <NavMenu />
+<svelte:head>
+    <title>Quiz Page</title>
+</svelte:head>
 <main class="grid-center min-h-screen px-6">
     <section class="grid-stack gap-4">
         <h1 class="text-3xl font-semibold text-center">Quiz page</h1>
