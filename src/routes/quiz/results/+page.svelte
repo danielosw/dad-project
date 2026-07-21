@@ -3,17 +3,9 @@
     import type { PageProps } from "./$types";
 
     let { form }: PageProps = $props();
-    let score = $derived.by(() => {
-        let total = 0;
-        if (form?.result) {
-            form.result.forEach((i) => {
-                if (i.givenAnswer == i.answer) {
-                    total++;
-                }
-            });
-        }
-        return total;
-    });
+    let score = () => {
+        return form?.score ?? 0;
+    };
 </script>
 
 <NavMenu />
