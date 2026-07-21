@@ -6,6 +6,7 @@
     let score = () => {
         return form?.score ?? 0;
     };
+    const realscore = score();
 </script>
 
 <NavMenu />
@@ -18,7 +19,7 @@
         <p class=" text-center">This is the quiz results page.</p>
         {#if form?.result}
             <p class=" text-center">
-                You scored {score} out of {form.result.length}
+                You scored {realscore} out of {form.result.length}
             </p>
             {#each form.result as result (result.ga + "-" + result.questionNumber + "-" + result.topic)}
                 <div class="grid-stack outline-custom">
