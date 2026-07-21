@@ -40,10 +40,10 @@
     <section class="grid-stack gap-4 text-center">
         <h1 class="text-3xl font-semibold">Login</h1>
         <p class="">This is the login page.</p>
-        <button class="medium-button" onclick={signInWithGitHub}
+        <button class="medium-button button-link" onclick={signInWithGitHub}
             >Sign in with GitHub</button
         >
-        <button class="medium-button" onclick={signInWithGoogle}
+        <button class="medium-button button-link" onclick={signInWithGoogle}
             >Sign in with Google</button
         >
     </section>

@@ -33,7 +33,7 @@
                     class="small-button border"
                     href={resolve("/account/past_quizzes")}>Past Quizzes</a
                 >
-                <button class="small-button border" onclick={logout}
+                <button class="small-button border button-link" onclick={logout}
                     >Logout</button
                 >
             {/if}
