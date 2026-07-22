@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
-import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
 		},
 
 	},
-	plugins: [enhancedImages(), sveltekit()],
+	plugins: [sveltekit()],
 
 
 	test: {
