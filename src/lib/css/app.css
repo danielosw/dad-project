@@ -39,6 +39,8 @@ Defualt to dark theme so stuff does not break without JS
 	--spacing: 0.25rem;
 	--radius-lg: 0.5rem;
 	--radius-md: 0.375rem;
+	--radius-sm: 0.25rem;
+	--radius-xs: 0.125rem;
 	--text-sm--line-height: calc(1.25 / 0.875);
 	--text-sm: 0.875rem;
 	--text-3xl: 1.875rem;
@@ -46,7 +48,14 @@ Defualt to dark theme so stuff does not break without JS
 	--font-weight-medium: 500;
 	--default-transition-duration: 150ms;
 	--default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
+	color-scheme: var(--color-scheme, dark);
+	color: var(--default-text-color);
+	background-color: var(--default-bg-color);
+	text-rendering: optimizeLegibility;
 
 
 }
@@ -125,16 +134,17 @@ Defualt to dark theme so stuff does not break without JS
 	@apply --gap-6();
 }
 
+@mixin --button-link() {
+	gap: calc(var(--spacing) * 2);
 
-.button-link {
-	@apply --gap-2();
 	display: grid;
 	grid-auto-flow: row;
 	cursor: pointer;
-	outline-style: solid;
-	outline-width: 2px;
-	outline-offset: 4px;
 	outline-color: var(--outline-color);
+}
+
+.button-link {
+	@apply --button-link();
 
 }
 
@@ -157,8 +167,16 @@ Defualt to dark theme so stuff does not break without JS
 }
 
 @mixin --small-button() {
+	border-radius: calc(var(--radius-sm));
 	padding-inline: calc(var(--spacing) * 3);
 	padding-block: calc(var(--spacing) * 1.5);
+
+}
+
+@mixin --very-small-button() {
+	border-radius: calc(var(--radius-xs));
+	padding-inline: calc(var(--spacing) * 1);
+	padding-block: calc(var(--spacing) * 0.5);
 }
 
 .small-button {
@@ -168,6 +186,7 @@ Defualt to dark theme so stuff does not break without JS
 
 
 @mixin --medium-button() {
+	border-radius: var(--radius-md);
 	padding-inline: calc(var(--spacing) * 5);
 	padding-block: calc(var(--spacing) * 2.5);
 }
@@ -179,6 +198,7 @@ Defualt to dark theme so stuff does not break without JS
 
 
 @mixin --big-button() {
+	border-radius: var(--radius-lg);
 	padding-inline: calc(var(--spacing) * 7);
 	padding-block: calc(var(--spacing) * 3.5);
 }
@@ -197,21 +217,6 @@ Defualt to dark theme so stuff does not break without JS
 	::file-selector-button {
 		border-color: var(--border-color, currentColor);
 	}
-}
-
-:root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
-
-	color-scheme: var(--color-scheme, dark);
-	color: var(--default-text-color);
-	background-color: var(--default-bg-color);
-
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 body {

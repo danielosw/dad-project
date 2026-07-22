@@ -5,7 +5,6 @@
 	justify-items: start;
 	width: 100%;
 	height: 100%;
-	/* make all the buttons the same size */
 }
 
 .visually-hidden {
@@ -120,11 +119,10 @@
 	@apply --grid-center-x();
 	@apply --gap-2();
 	justify-items: center;
-		/* 0.5rem = 8px */
-	;
+	
 	list-style: none;
-	padding: 0;
-	margin: 0;
+	padding: 0rem;
+	margin: 0rem;
 }
 
 /* Show menu when checkbox is checked */
