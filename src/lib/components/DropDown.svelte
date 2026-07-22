@@ -26,7 +26,7 @@
 	<div class="dropdown" class:open={isOpen}>
 		<button
 			type="button"
-			class="nav-toggle-button m-1"
+			class="nav-toggle-button margin-1"
 			onclick={toggleMenu}
 			aria-expanded={isOpen}
 			aria-controls="nav-menu"

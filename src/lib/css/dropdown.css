@@ -1,45 +1,46 @@
-@import "tailwindcss";
-@import "$lib/css/app.css";
-
+@import "app.css";
 .dropdown {
-	@apply grid-stack;
-	@apply gap-2;
-	@apply justify-items-start;
+	@apply --grid-stack();
+	@apply --gap-2();
+	justify-items: start;
 	width: 100%;
 	height: 100%;
-	/* make all the buttons the same size */
-}.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }
 
 .nav-menu {
-    display: none;
+	display: none;
 }
 
 .dropdown.open .nav-menu {
-    display: block;
+	display: block;
 }
+
 /* Show focus outline on label when input is focused via keyboard */
-.nav-toggle:focus-visible + .nav-toggle-label {
-    outline: 2px solid currentColor;
-    outline-offset: 4px;
-    border-radius: 4px;
+.nav-toggle:focus-visible+.nav-toggle-label {
+	outline: 2px solid currentColor;
+	outline-offset: 4px;
+	border-radius: 4px;
 }
+
 .barwrap {
-	@apply grid-center;
+	@apply --grid-center();
 	position: fixed;
 	top: 1.25rem;
 	left: 1.5rem;
 	z-index: 1000;
-	
+
 }
 
 .droplink {
@@ -95,11 +96,11 @@
 }
 
 /* When checked, show close icon and hide hamburger */
-.nav-toggle:checked ~ .nav-toggle-label .hamburger {
+.nav-toggle:checked~.nav-toggle-label .hamburger {
 	display: none;
 }
 
-.nav-toggle:checked ~ .nav-toggle-label .close-icon {
+.nav-toggle:checked~.nav-toggle-label .close-icon {
 	display: inline-block;
 }
 
@@ -114,16 +115,17 @@
 }
 
 .nav-menu ul {
-	@apply grid-stack;
-	@apply grid-center-x;
-	@apply justify-items-center;
-	@apply gap-2;
+	@apply --grid-stack();
+	@apply --grid-center-x();
+	@apply --gap-2();
+	justify-items: center;
+	
 	list-style: none;
-	padding: 0;
-	margin: 0;
+	padding: 0rem;
+	margin: 0rem;
 }
 
 /* Show menu when checkbox is checked */
-.nav-toggle:checked ~ .nav-menu {
+.nav-toggle:checked~.nav-menu {
 	display: block;
 }
