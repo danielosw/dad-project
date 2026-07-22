@@ -1,19 +1,18 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@import "$lib/css/app.css";
-@import "$lib/css/grid-utils.css";
-
+@import "../lib/css/app.css";
 
 .menu {
-	@apply grid-center;
-	@apply self-center;
-	@apply text-center;
-	@apply relative;
-	@apply max-h-min;
-	@apply min-h-fit;
+	@apply --grid-center();
+    align-self: center;
+    text-align: center;
+    position: relative;
+    max-height: min-content;
+    min-height: fit-content;
 	padding: 2rem 1rem;
 }
+.min-h-screen{
+	    min-height: 100vh;
 
+}
 .menu ul {
 	list-style: none;
 	padding: 0;
@@ -49,10 +48,11 @@
 
 
 .link-item {
+		@apply --small-button();
+
 	background-color: #0f172a;
 	color: var(--default-text-color);
-	@apply text-center;
-	@apply small-button;
+    text-align: center;
 	border: 1px solid var(--border-color);
 
 	&:hover {
@@ -71,8 +71,34 @@
 }
 
 .text-item {
+		@apply --small-button();
+
 	background-color: var(--default-bg-color);
-	@apply small-button;
 	font-weight: 600;
 	font-size: 1.125rem;
+}
+.main-content {
+	@apply --grid-center();
+	min-height: 100vh;
+	padding-right: 1.5rem; padding-left: 1.5rem; 
+	
+}
+.main-section {
+	@apply --grid-stack();
+	@apply --gap-4();
+	text-align: center;
+}
+.main-header {
+	font-weight: 600;
+	font-size:text-3xl;
+}
+.text-center {
+	text-align: center;
+}
+
+.stacker {
+	@apply --grid-auto-fit();
+	@apply --grid-center-x();
+	@apply --grid-center-y();
+	@apply --gap-3();
 }

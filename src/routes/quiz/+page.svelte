@@ -9,9 +9,9 @@
 <svelte:head>
     <title>Quiz Page</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
+<main class="main-content">
     <section class="grid-stack gap-4">
-        <h1 class="text-3xl font-semibold text-center">Quiz page</h1>
+        <h1 class="main-header text-center">Quiz page</h1>
         <p class=" text-center">This is the quiz page.</p>
         <form
             method="POST"
@@ -48,3 +48,6 @@
         </form>
     </section>
 </main>
+
+<style>
+</style>
