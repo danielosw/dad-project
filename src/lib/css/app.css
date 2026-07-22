@@ -1,8 +1,6 @@
-@import "tailwindcss";
-@import "$lib/css/grid-utils.css";
+@import "grid-utils.css";
 
-/* setup themes, text color, bg color vars */
-:root[data-theme='light'] {
+@mixin --light-theme() {
 	--default-text-color: rgba(0, 0, 0, 0.87);
 	--default-bg-color: rgba(255, 255, 255, 1);
 	--border-color: rgba(0, 0, 0, 0.1);
@@ -11,7 +9,8 @@
 	--hover-link-color: #535bf2;
 	--outline-color: rgba(0, 0, 0, 0.5);
 }
-:root[data-theme='dark'] {
+
+@mixin --dark-theme() {
 	--default-text-color: rgba(255, 255, 255, 0.87);
 	--default-bg-color: rgba(36, 36, 36, 1);
 	--border-color: rgba(255, 255, 255, 0.1);
@@ -20,64 +19,177 @@
 	--hover-link-color: #535bf2;
 	--outline-color: rgba(255, 255, 255, 0.5);
 }
+
+/* setup themes, text color, bg color vars */
+:root[data-theme='light'] {
+	@apply --light-theme();
+}
+
+:root[data-theme='dark'] {
+	@apply --dark-theme();
+}
+
+
+
 /* 
 Defualt to dark theme so stuff does not break without JS
 */
 :root {
-	--default-text-color: rgba(255, 255, 255, 0.87);
-	--default-bg-color: rgba(36, 36, 36, 1);
-	--border-color: rgba(255, 255, 255, 0.1);
-	--color-scheme: dark;
-	--link-color: #646cff;
-	--hover-link-color: #535bf2;
-	--outline-color: rgba(255, 255, 255, 0.5);
-}
-@utility button-link {
-	@apply grid-stack;
-	@apply gap-2;
-	@apply cursor-pointer;
-	@apply focus-visible:outline-2;
-	@apply focus-visible:outline-offset-4;
+	@apply --dark-theme();
+	--spacing: 0.25rem;
+	--radius-lg: 0.5rem;
+	--radius-md: 0.375rem;
+	--text-sm--line-height: calc(1.25 / 0.875);
+	--text-sm: 0.875rem;
+	--text-3xl: 1.875rem;
+	--text-lg: 1.125rem;
+	--font-weight-medium: 500;
+	--default-transition-duration: 150ms;
+	--default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+
 
 }
 
-@utility outline-custom{
-	@apply outline-2;
-	@apply outline-offset-6;
-	@apply outline-solid;
+.border {
+	border-style: solid;
+	border-width: 1px;
+
+}
+
+@mixin --gap-1() {
+	gap: calc(var(--spacing) * 1);
+}
+
+@mixin --gap-2() {
+	gap: calc(var(--spacing) * 2);
+}
+
+@mixin --gap-3() {
+	gap: calc(var(--spacing) * 3);
+}
+
+@mixin --gap-4() {
+	gap: calc(var(--spacing) * 4);
+}
+
+@mixin --gap-5() {
+	gap: calc(var(--spacing) * 5);
+}
+
+@mixin --gap-6() {
+	gap: calc(var(--spacing) * 6);
+}
+
+@mixin --text-lg() {
+	font-size: var(--text-lg);
+}
+
+@mixin --font-medium() {
+	font-weight: var(--font-weight-medium);
+}
+
+.margin-1 {
+	margin: 0.25rem;
+}
+
+.text-lg {
+	@apply --text-lg();
+}
+
+.font-medium {
+	@apply --font-medium();
+}
+
+.gap-1 {
+	@apply --gap-1();
+}
+
+.gap-2 {
+	@apply --gap-2();
+}
+
+.gap-3 {
+	@apply --gap-3();
+}
+
+.gap-4 {
+	@apply --gap-4();
+}
+
+.gap-5 {
+	@apply --gap-5();
+}
+
+.gap-6 {
+	@apply --gap-6();
+}
+
+
+.button-link {
+	@apply --gap-2();
+	display: grid;
+	grid-auto-flow: row;
+	cursor: pointer;
+	outline-style: solid;
+	outline-width: 2px;
+	outline-offset: 4px;
+	outline-color: var(--outline-color);
+
+}
+
+.outline-custom {
+	outline-width: 2px;
+	outline-offset: 6px;
+	outline-style: solid;
+
 	outline-color: var(--outline-color);
 }
-@utility base-button {
-	@apply rounded-sm;
 
-	@apply text-sm;
-	@apply font-medium;
+
+@mixin --base-button() {
+	border-radius: 0.25rem;
+	font-size: var(--text-sm);
+	line-height: var(--text-sm--line-height);
 	border: 1px solid var(--border-color);
 	background-color: var(--default-bg-color);
 	color: var(--default-text-color);
 }
-@utility small-button {
 
-	@apply px-3;
-	@apply py-1.5;
-	@apply base-button;
-
-
+@mixin --small-button() {
+	padding-inline: calc(var(--spacing) * 3);
+	padding-block: calc(var(--spacing) * 1.5);
 }
 
-@utility big-button {
-	@apply px-7;
-	@apply py-3.5;
-	@apply base-button;
+.small-button {
+	@apply --base-button();
+	@apply --small-button();
+}
 
+
+@mixin --medium-button() {
+	padding-inline: calc(var(--spacing) * 5);
+	padding-block: calc(var(--spacing) * 2.5);
 }
-@utility medium-button {
-	
-	@apply px-5;
-	@apply py-2.5;
-	@apply base-button;
+
+.medium-button {
+	@apply --base-button();
+	@apply --medium-button();
 }
+
+
+@mixin --big-button() {
+	padding-inline: calc(var(--spacing) * 7);
+	padding-block: calc(var(--spacing) * 3.5);
+}
+
+.big-button {
+	@apply --base-button();
+	@apply --big-button();
+}
+
 @layer base {
+
 	*,
 	::after,
 	::before,

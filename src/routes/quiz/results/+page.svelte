@@ -13,9 +13,9 @@
 <svelte:head>
     <title>Quiz Results</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
+<main class="main-content">
     <section class="grid-stack gap-6">
-        <h1 class="text-3xl font-semibold text-center">Quiz Results</h1>
+        <h1 class="main-header text-center">Quiz Results</h1>
         <p class=" text-center">This is the quiz results page.</p>
         {#if form?.result}
             <p class=" text-center">

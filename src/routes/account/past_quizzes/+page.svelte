@@ -18,10 +18,10 @@
 <svelte:head>
     <title>Past quizzes</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
-    <section class="grid-stack gap-4 text-center">
+<main class="main-content">
+    <section class="main-section">
         {#if data.pastQuizzes.length > 0}
-            <h1 class="text-3xl font-semibold">Past Quizzes</h1>
+            <h1 class="main-header">Past Quizzes</h1>
             <ul class="grid-stack gap-2">
                 {#each data.pastQuizzes as quiz (quiz.id)}
                     <li class="grid-stack outline-custom p-4">
@@ -53,7 +53,7 @@
                 {/each}
             </ul>
         {:else}
-            <h1 class="text-3xl font-semibold">No Past Quizzes</h1>
+            <h1 class="main-header">No Past Quizzes</h1>
             <p>You have not taken any quizzes yet.</p>
         {/if}
     </section>

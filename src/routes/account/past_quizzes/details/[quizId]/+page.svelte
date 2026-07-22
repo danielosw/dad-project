@@ -45,7 +45,7 @@
 <svelte:head>
     <title>Details of quiz {data.quiz?.id}</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
+<main class="main-content">
     {#if data.quiz?.answers}
         <p class=" text-center">
             You scored {totalScore} out of {data.quiz.answers.length}
