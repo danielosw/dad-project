@@ -30,6 +30,7 @@
 	},
 	"devDependencies": {
 		"@better-auth/drizzle-adapter": "1.7.0-rc.1",
+		"@csstools/postcss-mixins": "^1.0.0",
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-node": "^5.5.7",
