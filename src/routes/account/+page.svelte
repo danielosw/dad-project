@@ -19,14 +19,14 @@
 <svelte:head>
     <title>Account Page</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
-    <section class="grid-stack gap-4 text-center">
+<main class="main-content">
+    <section class="main-section">
         <p class="">
             {data.user?.email
                 ? `You are logged in as ${data.user.email}`
                 : "You are not logged in."}
         </p>
-        <div class="grid-auto-fit grid-center-x grid-center-y gap-3">
+        <div class="stacker">
             <!-- --- hide logout button if not logged in --- -->
             {#if data.user}
                 <a

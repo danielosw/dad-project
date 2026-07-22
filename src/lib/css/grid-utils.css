@@ -1,26 +1,52 @@
-@utility grid-center {
-	@apply grid;
-	@apply justify-center;
-	@apply items-center;
+@mixin --grid-center() {
+	display: grid;
+	justify-content: center;
+	align-items: center;
 }
 
-@utility grid-center-x {
-	@apply justify-center;
+@mixin --grid-center-x() {
+	justify-content: center;
 }
 
-@utility grid-center-y {
-	@apply items-center;
+@mixin --grid-center-y() {
+	align-items: center;
 }
 
-@utility grid-stack {
-	@apply grid;
-	@apply grid-flow-row;
+@mixin --grid-stack() {
+	display: grid;
+	grid-auto-flow: row;
 }
-@utility grid-column {
-	@apply grid;
-	@apply grid-flow-col;
+
+@mixin --grid-column() {
+	display: grid;
+	grid-auto-flow: column;
 }
-@utility grid-auto-fit {
-	@apply grid;
+
+@mixin --grid-auto-fit() {
+	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.grid-center {
+	@apply --grid-center();
+}
+
+.grid-center-x {
+	@apply --grid-center-x();
+}
+
+.grid-center-y {
+	@apply --grid-center-y();
+}
+
+.grid-stack {
+	@apply --grid-stack();
+}
+
+.grid-column {
+	@apply --grid-column();
+}
+
+.grid-auto-fit {
+	@apply --grid-auto-fit();
 }

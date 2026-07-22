@@ -1,4 +1,3 @@
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import { enhancedImages } from '@sveltejs/enhanced-img';
@@ -20,7 +19,8 @@ export default defineConfig({
 		},
 
 	},
-	plugins: [tailwindcss(), enhancedImages(), sveltekit()],
+	plugins: [enhancedImages(), sveltekit()],
+
 
 	test: {
 		expect: { requireAssertions: true },

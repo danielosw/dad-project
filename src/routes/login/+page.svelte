@@ -36,9 +36,9 @@
 <svelte:head>
     <title>Login Page</title>
 </svelte:head>
-<main class="grid-center min-h-screen px-6">
-    <section class="grid-stack gap-4 text-center">
-        <h1 class="text-3xl font-semibold">Login</h1>
+<main class="main-content">
+    <section class="main-section">
+        <h1 class="main-header">Login</h1>
         <p class="">This is the login page.</p>
         <button class="medium-button button-link" onclick={signInWithGitHub}
             >Sign in with GitHub</button
