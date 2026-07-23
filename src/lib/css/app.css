@@ -98,6 +98,54 @@ Defualt to dark theme so stuff does not break without JS
 	font-weight: var(--font-weight-medium);
 }
 
+@mixin --padding-1() {
+	padding: calc(var(--spacing) * 1);
+}
+
+@mixin --padding-2() {
+	padding: calc(var(--spacing) * 2);
+}
+
+@mixin --padding-3() {
+	padding: calc(var(--spacing) * 3);
+}
+
+@mixin --padding-4() {
+	padding: calc(var(--spacing) * 4);
+}
+
+@mixin --padding-5() {
+	padding: calc(var(--spacing) * 5);
+}
+
+@mixin --padding-6() {
+	padding: calc(var(--spacing) * 6);
+}
+
+.padding-1 {
+	@apply --padding-1();
+}
+
+.padding-2 {
+	@apply --padding-2();
+}
+
+.padding-3 {
+	@apply --padding-3();
+}
+
+.padding-4 {
+	@apply --padding-4();
+}
+
+.padding-5 {
+	@apply --padding-5();
+}
+
+.padding-6 {
+	@apply --padding-6();
+}
+
 .margin-1 {
 	margin: 0.25rem;
 }
