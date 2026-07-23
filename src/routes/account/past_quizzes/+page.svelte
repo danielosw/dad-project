@@ -24,7 +24,7 @@
             <h1 class="main-header">Past Quizzes</h1>
             <ul class="grid-stack gap-2">
                 {#each data.pastQuizzes as quiz (quiz.id)}
-                    <li class="grid-stack outline-custom p-4">
+                    <li class="grid-stack outline-custom padding-4">
                         <a
                             type="button"
                             href={resolve(
