@@ -44,7 +44,8 @@ Defualt to dark theme so stuff does not break without JS
 	--text-sm--line-height: calc(1.25 / 0.875);
 	--text-sm: 0.875rem;
 	--text-3xl: 1.875rem;
-	--text-lg: 1.125rem;
+	--text-lg-var: 1.125rem;
+	--text-md-var: 1rem;
 	--font-weight-medium: 500;
 	--default-transition-duration: 150ms;
 	--default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -91,9 +92,11 @@ Defualt to dark theme so stuff does not break without JS
 }
 
 @mixin --text-lg() {
-	font-size: var(--text-lg);
+	font-size: var(--text-lg-var);
 }
-
+@mixin --text-md() {
+	font-size: var(--text-md-var);
+}
 @mixin --font-medium() {
 	font-weight: var(--font-weight-medium);
 }
@@ -153,7 +156,9 @@ Defualt to dark theme so stuff does not break without JS
 .text-lg {
 	@apply --text-lg();
 }
-
+.text-md {
+	@apply --text-md();
+}
 .font-medium {
 	@apply --font-medium();
 }

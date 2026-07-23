@@ -22,9 +22,13 @@
 	grid-auto-flow: column;
 }
 
-@mixin --grid-auto-fit() {
+@mixin --grid-auto-fit-columns() {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+@mixin --grid-auto-fit-rows() {
+	display: grid;
+	grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
 }
 
 .grid-center {
@@ -47,6 +51,10 @@
 	@apply --grid-column();
 }
 
-.grid-auto-fit {
-	@apply --grid-auto-fit();
+.grid-auto-fit-columns {
+	@apply --grid-auto-fit-columns();
+}
+
+.grid-auto-fit-rows {
+	@apply --grid-auto-fit-rows();
 }
