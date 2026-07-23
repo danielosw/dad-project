@@ -198,7 +198,6 @@ Defualt to dark theme so stuff does not break without JS
 
 .outline-custom {
 	outline-width: 2px;
-	outline-offset: 6px;
 	outline-style: solid;
 
 	outline-color: var(--outline-color);

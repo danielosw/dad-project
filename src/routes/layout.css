@@ -79,12 +79,17 @@
 }
 .main-content {
 	@apply --grid-center();
+	@apply --auto-fit();
+	@apply --padding-4();
+
 	min-height: 100vh;
 	padding-right: 1.5rem; padding-left: 1.5rem; 
 	
 }
 .main-section {
 	@apply --grid-stack();
+	@apply --auto-fit();
+	@apply --padding-4();
 	@apply --gap-4();
 	text-align: center;
 }

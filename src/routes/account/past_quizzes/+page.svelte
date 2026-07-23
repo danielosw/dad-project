@@ -22,9 +22,9 @@
     <section class="main-section">
         {#if data.pastQuizzes.length > 0}
             <h1 class="main-header">Past Quizzes</h1>
-            <ul class="grid-stack gap-2">
+            <div class="grid-stack gap-4">
                 {#each data.pastQuizzes as quiz (quiz.id)}
-                    <li class="grid-stack outline-custom padding-4">
+                    <div class="grid-stack outline-custom">
                         <a
                             type="button"
                             href={resolve(
@@ -49,9 +49,9 @@
                                 Score:"{getScore(quiz)}/{quiz.answers.length}"
                             </p>
                         </a>
-                    </li>
+                    </div>
                 {/each}
-            </ul>
+            </div>
         {:else}
             <h1 class="main-header">No Past Quizzes</h1>
             <p>You have not taken any quizzes yet.</p>
