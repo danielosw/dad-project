@@ -1,6 +1,6 @@
-import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
 import { questions } from '$lib/server/db/schema';
+import type { Actions } from './$types';
 async function getQuizData() {
     // Fetch quiz data from your database 
     // check if the connection is working
@@ -15,7 +15,7 @@ async function getQuizData() {
         answerD: questions.answerD
     }).from(questions);
     // only return what is needed for the quiz page, not the correct answer
-    let quizData = result.map((row) => ({
+    const quizData = result.map((row) => ({
         ga: row.ga,
         topic: row.topic,
         questionNumber: row.questionNumber,
@@ -26,15 +26,35 @@ async function getQuizData() {
         D: row.answerD
 
     }));
-    // shuffle the quizData array to randomize the order of the questions
-    quizData = quizData.sort(() => Math.random() - 0.5);
-    // keep only 10 for testing
-    quizData = quizData.slice(0, 10);
     return quizData;
 }
 
-export const load: PageServerLoad = async () => {
-    return {
-        quizData: await getQuizData()
-    };
-};
+
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const actions = {
+
+    startQuiz: async ({ request }) => {
+
+        const data: FormData = await request.formData();
+
+        let quizData = await getQuizData()
+
+
+        // get the selected GAs from the form data
+        const selectedGAs = data.getAll('ga') as string[];
+        // filter the quizData to only include questions with the selected GAs
+        quizData = quizData.filter((q) => selectedGAs.includes(q.ga));
+        // shuffle the quizData array to randomize the order of the questions
+        quizData = quizData.sort(() => Math.random() - 0.5);
+        // keep only 10 for testing
+        quizData = quizData.slice(0, Math.min(10, quizData.length));
+
+        return {
+            quizData: quizData,
+            timerEnabled: data.get('timerEnabled'),
+            timerDuration: parseInt(data.get('timerDuration') as string) || 0,
+        };
+
+    }
+} satisfies Actions;

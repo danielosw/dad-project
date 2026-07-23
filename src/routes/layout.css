@@ -79,7 +79,6 @@
 }
 .main-content {
 	@apply --grid-center();
-	@apply --auto-fit();
 	@apply --padding-4();
 
 	min-height: 100vh;
@@ -88,7 +87,6 @@
 }
 .main-section {
 	@apply --grid-stack();
-	@apply --auto-fit();
 	@apply --padding-4();
 	@apply --gap-4();
 	text-align: center;
@@ -102,8 +100,15 @@
 }
 
 .stacker {
-	@apply --grid-auto-fit();
+	@apply --grid-auto-fit-columns();
 	@apply --grid-center-x();
 	@apply --grid-center-y();
 	@apply --gap-3();
+}
+/* 
+draws a box around the element with a border and padding
+*/
+.drawbox {
+	@apply --padding-4();
+	border: 1px solid var(--border-color);
 }

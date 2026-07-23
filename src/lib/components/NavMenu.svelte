@@ -15,7 +15,7 @@
     <li><a class="small-button" href={resolve("/")}>home</a></li>
     {#if user}
         <li><a class="small-button" href={resolve("/account")}>account</a></li>
-        <li><a class="small-button" href={resolve("/quiz")}>quiz</a></li>
+        <li><a class="small-button" href={resolve("/quiz/setup")}>quiz</a></li>
     {:else}
         <li><a class="small-button" href={resolve("/login")}>login</a></li>
     {/if}
