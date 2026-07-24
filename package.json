@@ -30,7 +30,7 @@
 	},
 	"devDependencies": {
 		"@better-auth/drizzle-adapter": "1.7.0-rc.1",
-		"@csstools/postcss-oklab-function": "^5.0.6",
+		"@csstools/postcss-oklab-function": "^5.0.7",
 		"@eslint/compat": "^2.1.0",
 		"@eslint/js": "^10.0.1",
 		"@sveltejs/adapter-node": "^5.5.7",
@@ -54,7 +54,7 @@
 		"node-addon-api": "^8.9.0",
 		"node-gyp": "^13.0.1",
 		"playwright": "^1.61.1",
-		"postcss": "^8.5.20",
+		"postcss": "^8.5.22",
 		"postcss-calc": "^10.1.1",
 		"postcss-import": "^16.1.1",
 		"postcss-preset-env": "^11.3.2",
