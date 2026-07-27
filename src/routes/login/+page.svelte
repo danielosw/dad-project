@@ -1,6 +1,15 @@
 <script lang="ts">
     import { authClient } from "$lib/auth-client";
     import { invalidate } from "$app/navigation";
+    const loginResult = async () => {
+        // make back go to home page after login, and invalidate the account and quiz pages so they will be reloaded with the new user data
+
+        history.replaceState(null, "", "/");
+        invalidate("/account");
+        invalidate("/");
+        invalidate("/quiz");
+    };
+
     const signInWithGitHub = async () => {
         await authClient.signIn.social({
             provider: "github",
@@ -13,9 +22,7 @@
 
             disableRedirect: false,
         });
-        invalidate("/account");
-        invalidate("/");
-        invalidate("/quiz");
+        await loginResult();
     };
     const signInWithGoogle = async () => {
         await authClient.signIn.social({
@@ -29,9 +36,7 @@
 
             disableRedirect: false,
         });
-        invalidate("/account");
-        invalidate("/quiz");
-        invalidate("/");
+        await loginResult();
     };
 </script>
 

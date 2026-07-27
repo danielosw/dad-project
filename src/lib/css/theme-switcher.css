@@ -2,18 +2,18 @@
 .theme-switcher {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--spacing);
+	@mixin gap 1;
+	@mixin padding 1;
+
 	border-radius: var(--radius-lg);
 	border-style: solid;
 	border-width: 1px;
-	padding: var(--spacing);
 	background-color: var(--default-bg-color);
 	border-color: var(--border-color);
 }
 
 .theme-switcher__button {
-	@apply --small-button();
-	@apply --base-button();
+	@mixin small-button;
 
 	transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
 	transition-timing-function: var(--default-transition-timing-function);
@@ -25,9 +25,9 @@
 	background-color: var(--border-color);
 }
 .nav-toggle-button{
-	@apply --very-small-button();
-	@apply --button-link();
-	@apply --base-button();
+	@mixin very-small-button;
+	@mixin button-link;
+	@mixin base-button;
 }
 .theme-switcher__button[data-active='true'] {
 	background-color: var(--default-text-color);

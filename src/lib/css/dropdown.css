@@ -1,7 +1,7 @@
 @import "app.css";
 .dropdown {
-	@apply --grid-stack();
-	@apply --gap-2();
+	@mixin grid-stack;
+	@mixin gap 2;
 	justify-items: start;
 	width: 100%;
 	height: 100%;
@@ -35,7 +35,7 @@
 }
 
 .barwrap {
-	@apply --grid-center();
+	@mixin grid-center;
 	position: fixed;
 	top: 1.25rem;
 	left: 1.5rem;
@@ -109,15 +109,15 @@
 	display: none;
 	background-color: var(--default-bg-color);
 	border-radius: 0.5rem;
-	padding: 0.5rem;
+	@mixin padding 2;
 	min-width: 10rem;
 	border: 1px solid var(--border-color);
 }
 
 .nav-menu ul {
-	@apply --grid-stack();
-	@apply --grid-center-x();
-	@apply --gap-2();
+	@mixin grid-stack;
+	@mixin grid-center-x;
+	@mixin gap 2;
 	justify-items: center;
 	
 	list-style: none;

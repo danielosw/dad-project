@@ -60,7 +60,7 @@
                 />
                 <h1 class="text-lg font-medium">Number of questions</h1>
                 <p class=" font-small subheader">
-                    If less than the existing number of questions available, the
+                    If more than the existing number of questions available, the
                     quiz will be generated with the all available questions.
                 </p>
                 <input

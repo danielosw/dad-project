@@ -1,6 +1,6 @@
 @import "grid-utils.css";
 
-@mixin --light-theme() {
+@define-mixin light-theme {
 	--default-text-color: rgba(0, 0, 0, 0.87);
 	--default-bg-color: rgba(255, 255, 255, 1);
 	--border-color: rgba(0, 0, 0, 0.1);
@@ -10,7 +10,8 @@
 	--outline-color: rgba(0, 0, 0, 0.5);
 }
 
-@mixin --dark-theme() {
+
+@define-mixin dark-theme {
 	--default-text-color: rgba(255, 255, 255, 0.87);
 	--default-bg-color: rgba(36, 36, 36, 1);
 	--border-color: rgba(255, 255, 255, 0.1);
@@ -22,11 +23,11 @@
 
 /* setup themes, text color, bg color vars */
 :root[data-theme='light'] {
-	@apply --light-theme();
+	@mixin light-theme;
 }
 
 :root[data-theme='dark'] {
-	@apply --dark-theme();
+	@mixin dark-theme;
 }
 
 
@@ -35,7 +36,7 @@
 Defualt to dark theme so stuff does not break without JS
 */
 :root {
-	@apply --dark-theme();
+	@mixin dark-theme;
 	--spacing: 0.25rem;
 	--radius-lg: 0.5rem;
 	--radius-md: 0.375rem;
@@ -67,128 +68,117 @@ Defualt to dark theme so stuff does not break without JS
 
 }
 
-@mixin --gap-1() {
-	gap: calc(var(--spacing) * 1);
+@define-mixin gap $size {
+	gap: calc(var(--spacing) * $size);
 }
 
-@mixin --gap-2() {
-	gap: calc(var(--spacing) * 2);
+
+@define-mixin textsize $size {
+	font-size: var($size);
 }
 
-@mixin --gap-3() {
-	gap: calc(var(--spacing) * 3);
+
+@define-mixin fontweight $weight {
+	font-weight: var($weight);
 }
 
-@mixin --gap-4() {
-	gap: calc(var(--spacing) * 4);
+
+@define-mixin padding $size {
+	padding: calc(var(--spacing) * $size);
 }
 
-@mixin --gap-5() {
-	gap: calc(var(--spacing) * 5);
-}
 
-@mixin --gap-6() {
-	gap: calc(var(--spacing) * 6);
-}
-
-@mixin --text-lg() {
-	font-size: var(--text-lg-var);
-}
-@mixin --text-md() {
-	font-size: var(--text-md-var);
-}
-@mixin --font-medium() {
-	font-weight: var(--font-weight-medium);
-}
-
-@mixin --padding-1() {
-	padding: calc(var(--spacing) * 1);
-}
-
-@mixin --padding-2() {
-	padding: calc(var(--spacing) * 2);
-}
-
-@mixin --padding-3() {
-	padding: calc(var(--spacing) * 3);
-}
-
-@mixin --padding-4() {
-	padding: calc(var(--spacing) * 4);
-}
-
-@mixin --padding-5() {
-	padding: calc(var(--spacing) * 5);
-}
-
-@mixin --padding-6() {
-	padding: calc(var(--spacing) * 6);
+@define-mixin margin $size {
+	margin: calc(var(--spacing) * $size);
 }
 
 .padding-1 {
-	@apply --padding-1();
+	@mixin padding 1;
 }
 
 .padding-2 {
-	@apply --padding-2();
+	@mixin padding 2;
 }
 
 .padding-3 {
-	@apply --padding-3();
+	@mixin padding 3;
 }
 
 .padding-4 {
-	@apply --padding-4();
+	@mixin padding 4;
 }
 
 .padding-5 {
-	@apply --padding-5();
+	@mixin padding 5;
 }
 
 .padding-6 {
-	@apply --padding-6();
+	@mixin padding 6;
 }
+
 
 .margin-1 {
-	margin: 0.25rem;
+	@mixin margin 1;
 }
 
-.text-lg {
-	@apply --text-lg();
+.margin-2 {
+	@mixin margin 2;
 }
-.text-md {
-	@apply --text-md();
+
+.margin-3 {
+	@mixin margin 3;
 }
-.font-medium {
-	@apply --font-medium();
+
+.margin-4 {
+	@mixin margin 4;
+}
+
+.margin-5 {
+	@mixin margin 5;
+}
+
+.margin-6 {
+	@mixin margin 6;
 }
 
 .gap-1 {
-	@apply --gap-1();
+	@mixin gap 1;
 }
 
 .gap-2 {
-	@apply --gap-2();
+	@mixin gap 2;
 }
 
 .gap-3 {
-	@apply --gap-3();
+	@mixin gap 3;
 }
 
 .gap-4 {
-	@apply --gap-4();
+	@mixin gap 4;
 }
 
 .gap-5 {
-	@apply --gap-5();
+	@mixin gap 5;
 }
 
 .gap-6 {
-	@apply --gap-6();
+	@mixin gap 6;
 }
 
-@mixin --button-link() {
-	gap: calc(var(--spacing) * 2);
+.text-lg {
+	@mixin textsize --text-lg-var;
+}
+
+.text-md {
+	@mixin textsize --text-md-var;
+}
+
+.font-medium {
+	@mixin fontweight --font-weight-medium;
+}
+
+@define-mixin button-link {
+	@mixin gap 2;
 
 	display: grid;
 	grid-auto-flow: row;
@@ -197,7 +187,7 @@ Defualt to dark theme so stuff does not break without JS
 }
 
 .button-link {
-	@apply --button-link();
+	@mixin button-link;
 
 }
 
@@ -208,8 +198,15 @@ Defualt to dark theme so stuff does not break without JS
 	outline-color: var(--outline-color);
 }
 
+@define-mixin padding-inline $size {
+	padding-inline: calc(var(--spacing) * $size);
+}
 
-@mixin --base-button() {
+@define-mixin padding-block $size {
+	padding-block: calc(var(--spacing) * $size);
+}
+
+@define-mixin base-button {
 	border-radius: 0.25rem;
 	font-size: var(--text-sm);
 	line-height: var(--text-sm--line-height);
@@ -218,46 +215,53 @@ Defualt to dark theme so stuff does not break without JS
 	color: var(--default-text-color);
 }
 
-@mixin --small-button() {
+@define-mixin small-button {
 	border-radius: calc(var(--radius-sm));
-	padding-inline: calc(var(--spacing) * 3);
-	padding-block: calc(var(--spacing) * 1.5);
+	@mixin padding-inline 3;
+	@mixin padding-block 1.5;
+	@mixin base-button;
 
 }
 
-@mixin --very-small-button() {
+@define-mixin very-small-button {
 	border-radius: calc(var(--radius-xs));
-	padding-inline: calc(var(--spacing) * 1);
-	padding-block: calc(var(--spacing) * 0.5);
+	@mixin padding-inline 1;
+	@mixin padding-block 0.5;
+
+}
+
+
+
+@define-mixin medium-button {
+	border-radius: var(--radius-md);
+	@mixin padding-inline 5;
+	@mixin padding-block 2.5;
+	@mixin base-button;
+}
+
+
+
+
+
+
+@define-mixin big-button {
+	border-radius: var(--radius-lg);
+	@mixin padding-inline 7;
+	@mixin padding-block 3.5;
+
 }
 
 .small-button {
-	@apply --base-button();
-	@apply --small-button();
-}
-
-
-@mixin --medium-button() {
-	border-radius: var(--radius-md);
-	padding-inline: calc(var(--spacing) * 5);
-	padding-block: calc(var(--spacing) * 2.5);
+	@mixin small-button;
 }
 
 .medium-button {
-	@apply --base-button();
-	@apply --medium-button();
-}
-
-
-@mixin --big-button() {
-	border-radius: var(--radius-lg);
-	padding-inline: calc(var(--spacing) * 7);
-	padding-block: calc(var(--spacing) * 3.5);
+	@mixin medium-button;
 }
 
 .big-button {
-	@apply --base-button();
-	@apply --big-button();
+	@mixin base-button;
+	@mixin big-button;
 }
 
 @layer base {

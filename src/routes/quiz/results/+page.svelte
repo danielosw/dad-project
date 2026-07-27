@@ -3,10 +3,8 @@
     import type { PageProps } from "./$types";
 
     let { form }: PageProps = $props();
-    let score = () => {
-        return form?.score ?? 0;
-    };
-    const realscore = score();
+    import QuizViewer from "$lib/components/RenderQuiz.svelte";
+    import { resolve } from "$app/paths";
 </script>
 
 <NavMenu />
@@ -16,33 +14,14 @@
 <main class="main-content">
     <section class="grid-stack gap-6">
         <h1 class="main-header text-center">Quiz Results</h1>
-        <p class=" text-center">This is the quiz results page.</p>
-        {#if form?.result}
-            <p class=" text-center">
-                You scored {realscore} out of {form.result.length}
-            </p>
-            {#each form.result as result (result.ga + "-" + result.questionNumber + "-" + result.topic)}
-                <div class="grid-stack outline-custom">
-                    <p class="text-lg font-medium">
-                        Question {result.questionNumber} of Topic: {result.topic}
-                        of Group Area: {result.ga}
-                    </p>
-                    <p class="">
-                        Question: {result.question}
-                    </p>
-                    <p class="">
-                        Your answer: {result.givenAnswer} - {result.userAnswerText}
-                    </p>
-                    <p class="">
-                        Correct answer: {result.answer} - {result.correctAnswerText}
-                    </p>
-                    <p class="">
-                        Explanation: {result.reasoning}
-                    </p>
-                </div>
-            {/each}
-        {:else}
-            <p class=" text-center">No results available.</p>
-        {/if}
+
+        <QuizViewer quiz={form?.quiz} />
+        <a
+            class="small-button button-link text-center"
+            href={resolve("/quiz/setup")}>Take Another Quiz</a
+        >
+        <a class="small-button button-link text-center" href={resolve("/")}
+            >Back to Home</a
+        >
     </section>
 </main>

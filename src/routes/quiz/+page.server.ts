@@ -29,9 +29,6 @@ async function getQuizData() {
     return quizData;
 }
 
-
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const actions = {
 
     startQuiz: async ({ request }) => {

@@ -77,6 +77,11 @@ export const actions = {
             return acc;
         }, [] as { ga: string; questionNumber: number; topic: string; answer: string }[]);
         let result: QuizResult[] = [];
+        let createdResult: {
+            id: number;
+            userId: string;
+            answers: AnswerSubmission[];
+        } | { id: number; } | null = null;
         for (const i of results) {
             // get the text for what they guess and what the correct answer is 
             // correct awnser gives A,B,C,D so we need to get the text for that answer from the questions table
@@ -107,7 +112,7 @@ export const actions = {
             })));
         }
         if (session?.user?.id) {
-            await createResult(session.user.id, result.map((r) => ({
+            createdResult = await createResult(session.user.id, result.map((r) => ({
                 ga: r.ga,
                 topic: r.topic,
                 questionNumber: r.questionNumber,
@@ -115,9 +120,56 @@ export const actions = {
             })));
         }
         const score = await calculateScore(result);
+        // get the new quiz object with the answers and the score
 
+        type Answer = {
+            resultId: number;
+            ga: string;
+            questionNumber: number | string;
+            topic: string;
+            answered: string;
+            questionDetails: {
+                questionText: string;
+                answerA: string;
+                answerB: string;
+                answerC: string;
+                answerD: string;
+                correctAnswer: string;
+                reasoning: string;
+            } | null;
+        };
+        type Quiz = {
+            id: string | number;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            answers: Answer[];
+        };
+        // we need to create a quiz object that has the answers and the score
+        const quizResult: Quiz = {
+            id: createdResult?.id ?? 0,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            userId: session?.user?.id ?? '',
+            answers: result.map((r) => ({
+                resultId: createdResult?.id ?? 0,
+                ga: r.ga,
+                questionNumber: r.questionNumber,
+                topic: r.topic,
+                answered: r.givenAnswer,
+                questionDetails: {
+                    questionText: r.question,
+                    answerA: "A" === r.answer ? r.correctAnswerText : "A" === r.givenAnswer ? r.userAnswerText : "",
+                    answerB: "B" === r.answer ? r.correctAnswerText : "B" === r.givenAnswer ? r.userAnswerText : "",
+                    answerC: "C" === r.answer ? r.correctAnswerText : "C" === r.givenAnswer ? r.userAnswerText : "",
+                    answerD: "D" === r.answer ? r.correctAnswerText : "D" === r.givenAnswer ? r.userAnswerText : "",
+                    correctAnswer: r.correctAnswerText,
+                    reasoning: r.reasoning
+                }
+            }))
+        };
         return {
-            result, score
+            result, score, quiz: quizResult
         };
 
     }
