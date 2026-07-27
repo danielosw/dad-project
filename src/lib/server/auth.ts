@@ -15,7 +15,8 @@ export const auth = betterAuth({
     socialProviders: {
         github: {
             clientId: GITHUB_CLIENT_ID,
-            clientSecret: GITHUB_CLIENT_SECRET
+            clientSecret: GITHUB_CLIENT_SECRET,
+            redirectUri: `${PUBLIC_BETTER_AUTH_URL}/api/auth/callback/github`
         },
         google: {
             clientId: GOOGLE_CLIENT_ID,

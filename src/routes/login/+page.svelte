@@ -14,6 +14,7 @@
             disableRedirect: false,
         });
         invalidate("/account");
+        invalidate("/");
         invalidate("/quiz");
     };
     const signInWithGoogle = async () => {
@@ -30,6 +31,7 @@
         });
         invalidate("/account");
         invalidate("/quiz");
+        invalidate("/");
     };
 </script>
 

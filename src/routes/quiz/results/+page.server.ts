@@ -63,7 +63,6 @@ async function calculateScore(result: QuizResult[]): Promise<number> {
     });
     return total;
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const actions = {
 
     submitQuiz: async ({ request }) => {

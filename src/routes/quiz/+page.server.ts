@@ -39,7 +39,7 @@ export const actions = {
         const data: FormData = await request.formData();
 
         let quizData = await getQuizData()
-
+        const numQuestions = parseInt(data.get('numQuestions') as string) || 10;
 
         // get the selected GAs from the form data
         const selectedGAs = data.getAll('ga') as string[];
@@ -47,8 +47,8 @@ export const actions = {
         quizData = quizData.filter((q) => selectedGAs.includes(q.ga));
         // shuffle the quizData array to randomize the order of the questions
         quizData = quizData.sort(() => Math.random() - 0.5);
-        // keep only 10 for testing
-        quizData = quizData.slice(0, Math.min(10, quizData.length));
+        // keep only the specified number of questions
+        quizData = quizData.slice(0, Math.min(numQuestions, quizData.length));
 
         return {
             quizData: quizData,
