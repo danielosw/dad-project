@@ -1,9 +1,9 @@
 import { createAuthClient, type SvelteAuthClient } from 'better-auth/svelte';
-import { PUBLIC_BETTER_AUTH_URL } from '$env/static/public';
+import { env } from '$env/dynamic/public';
 import type { BetterAuthClientOptions } from 'better-auth/types';
 
 const authClient: SvelteAuthClient<BetterAuthClientOptions> = createAuthClient({
-    baseURL: PUBLIC_BETTER_AUTH_URL
+    baseURL: env.PUBLIC_BETTER_AUTH_URL
 });
 
 
