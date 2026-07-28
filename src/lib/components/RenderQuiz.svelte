@@ -1,29 +1,5 @@
 <script lang="ts">
-    type Answer = {
-        resultId: number;
-        ga: string;
-        questionNumber: number | string;
-        topic: string;
-        answered: string;
-        questionDetails: {
-            questionText: string;
-            answerA: string;
-            answerB: string;
-            answerC: string;
-            answerD: string;
-            correctAnswer: string;
-            reasoning: string;
-        } | null;
-    };
-
-    type Quiz = {
-        id: string | number;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
-        answers: Answer[];
-    };
-
+    import type { Quiz, Answer } from "$lib/types";
     interface Props {
         quiz?: Quiz | null;
     }
