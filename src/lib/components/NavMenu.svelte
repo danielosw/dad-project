@@ -22,5 +22,5 @@
 </Dropdown>
 
 <style>
-    @import "../css/app.css";
+    @import "$lib/css/app.css";
 </style>

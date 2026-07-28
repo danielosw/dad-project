@@ -1,4 +1,4 @@
-@import "grid-utils.css";
+@import "$lib/css/grid-utils.css";
 
 @define-mixin light-theme {
 	--default-text-color: rgba(0, 0, 0, 0.87);
