@@ -50,13 +50,14 @@
                     />
                     <span>No</span>
                 </label>
-                <h2 class="text-md font-medium">timer duration (in minutes)</h2>
+                <h2 class="text-md font-medium">Timer duration (in minutes)</h2>
                 <input
                     type="number"
                     name="timerDuration"
                     min="1"
-                    max="180"
+                    max="240"
                     required
+                    value="180"
                 />
                 <h1 class="text-lg font-medium">Number of questions</h1>
                 <p class=" font-small subheader">
@@ -67,8 +68,9 @@
                     type="number"
                     name="numQuestions"
                     min="1"
-                    max="100"
+                    max="140"
                     required
+                    value="140"
                 />
             </div>
 
@@ -83,5 +85,12 @@
     /* keep the number of questions subheader small by setting a max-width */
     .subheader {
         max-width: 600px;
+    }
+    /* max width of 50% of the screen for input fields */
+    input[type="number"] {
+        /* set the max width to 20% of the screen */
+        max-width: 20%;
+        /* center the input field */
+        margin: 0 auto;
     }
 </style>

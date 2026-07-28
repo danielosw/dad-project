@@ -92,6 +92,95 @@ Defualt to dark theme so stuff does not break without JS
 	margin: calc(var(--spacing) * $size);
 }
 
+@define-mixin button-link {
+	@mixin gap 2;
+
+	display: grid;
+	grid-auto-flow: row;
+	cursor: pointer;
+	outline-color: var(--outline-color);
+}
+
+
+
+@define-mixin padding-inline $size {
+	padding-inline: calc(var(--spacing) * $size);
+}
+
+@define-mixin padding-block $size {
+	padding-block: calc(var(--spacing) * $size);
+}
+
+@define-mixin base-button {
+	border-radius: 0.25rem;
+	font-size: var(--text-sm);
+	line-height: var(--text-sm--line-height);
+	border: 1px solid var(--border-color);
+	background-color: var(--default-bg-color);
+	color: var(--default-text-color);
+}
+
+@define-mixin small-button {
+	border-radius: calc(var(--radius-sm));
+	@mixin padding-inline 3;
+	@mixin padding-block 1.5;
+	@mixin base-button;
+
+}
+
+@define-mixin very-small-button {
+	border-radius: calc(var(--radius-xs));
+	@mixin padding-inline 1;
+	@mixin padding-block 0.5;
+
+}
+
+
+
+@define-mixin medium-button {
+	border-radius: var(--radius-md);
+	@mixin padding-inline 5;
+	@mixin padding-block 2.5;
+	@mixin base-button;
+}
+
+
+
+
+
+
+@define-mixin big-button {
+	border-radius: var(--radius-lg);
+	@mixin padding-inline 7;
+	@mixin padding-block 3.5;
+
+}
+
+.small-button {
+	@mixin small-button;
+}
+
+.medium-button {
+	@mixin medium-button;
+}
+
+.big-button {
+	@mixin base-button;
+	@mixin big-button;
+}
+.button-link {
+	@mixin button-link;
+
+}
+
+.outline-custom {
+	outline-width: 2px;
+	outline-offset: 4px;
+	outline-style: solid;
+
+	outline-color: var(--outline-color);
+}
+
 .padding-1 {
 	@mixin padding 1;
 }
@@ -175,93 +264,6 @@ Defualt to dark theme so stuff does not break without JS
 
 .font-medium {
 	@mixin fontweight --font-weight-medium;
-}
-
-@define-mixin button-link {
-	@mixin gap 2;
-
-	display: grid;
-	grid-auto-flow: row;
-	cursor: pointer;
-	outline-color: var(--outline-color);
-}
-
-.button-link {
-	@mixin button-link;
-
-}
-
-.outline-custom {
-	outline-width: 2px;
-	outline-style: solid;
-
-	outline-color: var(--outline-color);
-}
-
-@define-mixin padding-inline $size {
-	padding-inline: calc(var(--spacing) * $size);
-}
-
-@define-mixin padding-block $size {
-	padding-block: calc(var(--spacing) * $size);
-}
-
-@define-mixin base-button {
-	border-radius: 0.25rem;
-	font-size: var(--text-sm);
-	line-height: var(--text-sm--line-height);
-	border: 1px solid var(--border-color);
-	background-color: var(--default-bg-color);
-	color: var(--default-text-color);
-}
-
-@define-mixin small-button {
-	border-radius: calc(var(--radius-sm));
-	@mixin padding-inline 3;
-	@mixin padding-block 1.5;
-	@mixin base-button;
-
-}
-
-@define-mixin very-small-button {
-	border-radius: calc(var(--radius-xs));
-	@mixin padding-inline 1;
-	@mixin padding-block 0.5;
-
-}
-
-
-
-@define-mixin medium-button {
-	border-radius: var(--radius-md);
-	@mixin padding-inline 5;
-	@mixin padding-block 2.5;
-	@mixin base-button;
-}
-
-
-
-
-
-
-@define-mixin big-button {
-	border-radius: var(--radius-lg);
-	@mixin padding-inline 7;
-	@mixin padding-block 3.5;
-
-}
-
-.small-button {
-	@mixin small-button;
-}
-
-.medium-button {
-	@mixin medium-button;
-}
-
-.big-button {
-	@mixin base-button;
-	@mixin big-button;
 }
 
 @layer base {

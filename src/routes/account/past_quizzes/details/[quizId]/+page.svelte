@@ -16,10 +16,7 @@
             action={`/account/past_quizzes/details/${data.quiz?.id}?/delete`}
         >
             <input type="hidden" name="quizId" value={data.quiz?.id} />
-            <button
-                type="submit"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 small-button button-link"
-            >
+            <button type="submit" class="medium-button button-link">
                 Delete Quiz
             </button>
         </form>

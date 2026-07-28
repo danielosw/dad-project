@@ -45,7 +45,7 @@ export const actions = {
         // shuffle the quizData array to randomize the order of the questions
         quizData = quizData.sort(() => Math.random() - 0.5);
         // keep only the specified number of questions
-        quizData = quizData.slice(0, Math.min(numQuestions, quizData.length));
+        quizData = quizData.slice(0, Math.min(Math.min(numQuestions, 140), quizData.length));
 
         return {
             quizData: quizData,
