@@ -1,7 +1,9 @@
-@import "$lib/css/app.css";
+@import url("$lib/css/app.css");
+
 .theme-switcher {
-	display: inline-flex;
+	display: inline flex;
 	align-items: center;
+
 	@mixin gap 1;
 	@mixin padding 1;
 
@@ -12,24 +14,27 @@
 	border-color: var(--border-color);
 }
 
-.theme-switcher__button {
+.theme-switcher-button {
 	@mixin small-button;
 
-	transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+	transition-property:
+		color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
 	transition-timing-function: var(--default-transition-timing-function);
 	transition-duration: var(--default-transition-duration);
 	color: var(--default-text-color);
 }
 
-.theme-switcher__button:hover {
+.theme-switcher-button:hover {
 	background-color: var(--border-color);
 }
-.nav-toggle-button{
+
+.nav-toggle-button {
 	@mixin very-small-button;
 	@mixin button-link;
 	@mixin base-button;
 }
-.theme-switcher__button[data-active='true'] {
+
+.theme-switcher-button[data-active="true"] {
 	background-color: var(--default-text-color);
 	color: var(--default-bg-color);
 }

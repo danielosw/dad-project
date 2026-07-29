@@ -1,7 +1,9 @@
-@import "$lib/css/app.css";
+@import url("$lib/css/app.css");
+
 .dropdown {
 	@mixin grid-stack;
 	@mixin gap 2;
+
 	justify-items: start;
 	width: 100%;
 	height: 100%;
@@ -14,28 +16,32 @@
 	padding: 0;
 	margin: -1px;
 	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
 	white-space: nowrap;
 	border: 0;
 }
 
 .nav-menu {
-	display: none;
+		display: none;
+	background-color: var(--default-bg-color);
+	border-radius: 0.5rem;
+
+	@mixin padding 2;
+
+	min-width: 10rem;
+	border: 1px solid var(--border-color);
+
 }
 
 .dropdown.open .nav-menu {
-	display: block;
+	display: block flow;
 }
 
-/* Show focus outline on label when input is focused via keyboard */
-.nav-toggle:focus-visible+.nav-toggle-label {
-	outline: 2px solid currentColor;
-	outline-offset: 4px;
-	border-radius: 4px;
-}
+
 
 .barwrap {
 	@mixin grid-center;
+
 	position: fixed;
 	top: 1.25rem;
 	left: 1.5rem;
@@ -51,7 +57,7 @@
 }
 
 .droplink a {
-	display: block;
+	display: block flow;
 	padding: 0.5rem 1rem;
 	color: var(--link-color);
 	text-decoration: none;
@@ -62,10 +68,10 @@
 }
 
 .buttonbar {
-	display: inline-block;
-	height: 1.5rem;
 	width: 1.5rem;
-	stroke: currentColor;
+	height: 1.5rem;
+	display: inline flow-root;
+	stroke: currentcolor;
 }
 
 /* Hide checkbox */
@@ -76,7 +82,7 @@
 /* Toggle label styling */
 .nav-toggle-label {
 	cursor: pointer;
-	display: inline-block;
+	display: inline flow-root;
 	padding: 0.5rem;
 	background-color: var(--default-bg-color);
 	border-radius: 0.5rem;
@@ -88,12 +94,21 @@
 
 /* Show hamburger by default, hide close icon */
 .nav-toggle-label .hamburger {
-	display: inline-block;
+	display: inline flow-root;
 }
 
 .nav-toggle-label .close-icon {
 	display: none;
 }
+
+/* Show focus outline on label when input is focused via keyboard */
+.nav-toggle:focus-visible+.nav-toggle-label {
+	outline: 2px solid currentcolor;
+	outline-offset: 4px;
+	border-radius: 4px;
+}
+
+
 
 /* When checked, show close icon and hide hamburger */
 .nav-toggle:checked~.nav-toggle-label .hamburger {
@@ -101,31 +116,23 @@
 }
 
 .nav-toggle:checked~.nav-toggle-label .close-icon {
-	display: inline-block;
+	display: inline flow-root;
 }
 
-/* Hide menu by default */
-.nav-menu {
-	display: none;
-	background-color: var(--default-bg-color);
-	border-radius: 0.5rem;
-	@mixin padding 2;
-	min-width: 10rem;
-	border: 1px solid var(--border-color);
-}
+
 
 .nav-menu ul {
 	@mixin grid-stack;
 	@mixin grid-center-x;
 	@mixin gap 2;
+
 	justify-items: center;
-	
 	list-style: none;
-	padding: 0rem;
-	margin: 0rem;
+	padding: 0;
+	margin: 0;
 }
 
 /* Show menu when checkbox is checked */
 .nav-toggle:checked~.nav-menu {
-	display: block;
+	display: block flow;
 }

@@ -1,5 +1,5 @@
 @define-mixin grid-center {
-	display: grid;
+	display: block grid;
 	justify-content: center;
 	align-items: center;
 }
@@ -13,22 +13,22 @@
 }
 
 @define-mixin grid-stack {
-	display: grid;
+	display: block grid;
 	grid-auto-flow: row;
 }
 
 @define-mixin grid-column {
-	display: grid;
+	display: block grid;
 	grid-auto-flow: column;
 }
 
 @define-mixin grid-auto-fit-columns {
-	display: grid;
+	display: block grid;
 	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 }
 
 @define-mixin grid-auto-fit-rows {
-	display: grid;
+	display: block grid;
 	grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
 }
 

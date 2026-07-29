@@ -62,18 +62,22 @@
                     <span>No</span>
                 </label>
                 <h2 class="text-md font-medium">Timer duration (in minutes)</h2>
-                <input
-                    type="number"
-                    name="timerDuration"
-                    min="1"
-                    max="240"
-                    required
-                    value="180"
-                />
-                <p class=" font-small subheader">
-                    If more than the existing number of questions available, the
-                    quiz will be generated with the all available questions.
-                </p>
+                <label class="answer-option">
+                    <input
+                        type="number"
+                        name="timerDuration"
+                        min="1"
+                        max="240"
+                        required
+                        value="180"
+                    />
+
+                    <p class=" font-small subheader">
+                        If more than the existing number of questions available,
+                        the quiz will be generated with the all available
+                        questions.
+                    </p>
+                </label>
             </div>
 
             <button type="submit" class="small-button button-link"

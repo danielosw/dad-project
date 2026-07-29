@@ -10,7 +10,7 @@
 		{@const isActive = $themePreference === option.value}
 		<button
 			type="button"
-			class="theme-switcher__button"
+			class="theme-switcher-button"
 			data-active={isActive}
 			aria-pressed={isActive}
 			aria-label={`Switch to ${option.label} theme`}

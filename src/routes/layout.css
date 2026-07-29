@@ -1,7 +1,8 @@
-@import "$lib/css/app.css";
+@import url("$lib/css/app.css");
 
 .menu {
 	@mixin grid-center;
+
 	align-self: center;
 	text-align: center;
 	position: relative;
@@ -19,9 +20,11 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	display: flex;
+	display: block flex;
 	flex-direction: column;
+
 	@mixin gap 4;
+
 	align-items: center;
 }
 
@@ -31,11 +34,11 @@
 }
 
 .main-home {
-	min-height: 100vh;
+	min-height: 16rem;
 	padding-bottom: 5rem;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
 	.menu {
 		padding: 1rem 0.5rem;
 	}
@@ -50,8 +53,7 @@
 
 
 .link-item {
-
-	background-color: #0f172a;
+	background-color: oklch(20.77% 0.0398 265.75deg);
 	color: var(--default-text-color);
 	text-align: center;
 	border: 1px solid var(--border-color);
@@ -60,13 +62,13 @@
 		background-color: var(--default-bg-color);
 	}
 
-	& a {
+	a {
 		text-decoration: none;
 		font-weight: 500;
-		display: block;
+		display: block flow;
 	}
 
-	& a:hover {
+	a:hover {
 		color: var(--default-text-color);
 	}
 }
@@ -93,12 +95,13 @@
 	@mixin grid-stack;
 	@mixin padding 4;
 	@mixin gap 4;
+
 	text-align: center;
 }
 
 .main-header {
 	font-weight: 600;
-	font-size: text-3xl;
+	font-size: var(--text-3xl);
 }
 
 .text-center {
@@ -117,5 +120,6 @@ draws a box around the element with a border and padding
 */
 .drawbox {
 	@mixin padding 4;
+
 	border: 1px solid var(--border-color);
 }
