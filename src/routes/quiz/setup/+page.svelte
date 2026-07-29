@@ -18,13 +18,24 @@
             action="/quiz?/startQuiz"
         >
             <div class="grid-stack drawbox">
-                <h1 class="text-lg font-medium">Select GAs to cover</h1>
+                <h1 class="text-lg font-medium">
+                    How many questions from each GA
+                </h1>
+                <h2 class="text-md font-medium">Total max of 140 questions</h2>
+
                 {#if ga.length === 0}
                     <p>No GA available</p>
                 {/if}
                 {#each ga as item (item)}
                     <label class="answer-option">
-                        <input type="checkbox" name="ga" value={item.ga} />
+                        <!-- send {ganame: {number}} to server -->
+                        <input
+                            type="number"
+                            name="ga[{item.ga}]"
+                            min="0"
+                            value="0"
+                            required
+                        />
                         <span>{item.ga}</span>
                     </label>
                 {/each}
@@ -59,19 +70,10 @@
                     required
                     value="180"
                 />
-                <h1 class="text-lg font-medium">Number of questions</h1>
                 <p class=" font-small subheader">
                     If more than the existing number of questions available, the
                     quiz will be generated with the all available questions.
                 </p>
-                <input
-                    type="number"
-                    name="numQuestions"
-                    min="1"
-                    max="140"
-                    required
-                    value="140"
-                />
             </div>
 
             <button type="submit" class="small-button button-link"

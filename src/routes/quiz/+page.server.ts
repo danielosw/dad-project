@@ -34,16 +34,37 @@ export const actions = {
     startQuiz: async ({ request }) => {
 
         const data: FormData = await request.formData();
-
         let quizData = await getQuizData()
-        const numQuestions = parseInt(data.get('numQuestions') as string) || 10;
+        const gaData: Record<string, number> = {};
 
-        // get the selected GAs from the form data
-        const selectedGAs = data.getAll('ga') as string[];
-        // filter the quizData to only include questions with the selected GAs
+        for (const [key, value] of data.entries()) {
+            const match = key.match(/^ga\[(.*)\]$/);
+            if (match) {
+                gaData[match[1]] = Number(value);
+            }
+        }
+        let tempNumQuestions = 0;
+        for (const ga in gaData) {
+            tempNumQuestions += gaData[ga];
+        }
+        const numQuestions = tempNumQuestions || 10;
+
+        // get the number of questions from each GA selected by the user
+        // casting the string to a number
+        const selectedGAs = Object.keys(gaData);
         quizData = quizData.filter((q) => selectedGAs.includes(q.ga));
-        // shuffle the quizData array to randomize the order of the questions
         quizData = quizData.sort(() => Math.random() - 0.5);
+
+        // keep only the specified number of questions from each GA
+        console.log('GA data:', gaData);
+        quizData = quizData.filter((q) => {
+            if (gaData[q.ga] > 0) {
+                gaData[q.ga]--;
+                return true;
+            }
+            return false;
+        });
+        // shuffle the quizData array to randomize the order of the questions
         // keep only the specified number of questions
         quizData = quizData.slice(0, Math.min(Math.min(numQuestions, 140), quizData.length));
 

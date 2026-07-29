@@ -2,17 +2,19 @@
 
 .menu {
 	@mixin grid-center;
-    align-self: center;
-    text-align: center;
-    position: relative;
-    max-height: min-content;
-    min-height: fit-content;
+	align-self: center;
+	text-align: center;
+	position: relative;
+	max-height: min-content;
+	min-height: fit-content;
 	padding: 2rem 1rem;
 }
-.min-h-screen{
-	    min-height: 100vh;
+
+.min-h-screen {
+	min-height: 100vh;
 
 }
+
 .menu ul {
 	list-style: none;
 	padding: 0;
@@ -37,7 +39,7 @@
 	.menu {
 		padding: 1rem 0.5rem;
 	}
-	
+
 	.menu li {
 		max-width: 16rem;
 	}
@@ -51,7 +53,7 @@
 
 	background-color: #0f172a;
 	color: var(--default-text-color);
-    text-align: center;
+	text-align: center;
 	border: 1px solid var(--border-color);
 
 	&:hover {
@@ -70,30 +72,35 @@
 }
 
 .text-item {
-		@mixin small-button;
+	@mixin small-button;
 
 	background-color: var(--default-bg-color);
 	font-weight: 600;
 	font-size: 1.125rem;
 }
+
 .main-content {
 	@mixin grid-center;
 	@mixin padding 4;
 
 	min-height: 100vh;
-	padding-right: 1.5rem; padding-left: 1.5rem; 
-	
+	padding-right: 1.5rem;
+	padding-left: 1.5rem;
+
 }
+
 .main-section {
 	@mixin grid-stack;
 	@mixin padding 4;
 	@mixin gap 4;
 	text-align: center;
 }
+
 .main-header {
 	font-weight: 600;
-	font-size:text-3xl;
+	font-size: text-3xl;
 }
+
 .text-center {
 	text-align: center;
 }
@@ -104,6 +111,7 @@
 	@mixin grid-center-y;
 	@mixin gap 3;
 }
+
 /* 
 draws a box around the element with a border and padding
 */
