@@ -4,7 +4,7 @@ import { env } from '$env/dynamic/private';
 import { relations } from "$lib/server/db/relations";
 const ssl = {
 	rejectUnauthorized: true, // You can safely set this to true once the cert loads
-	ca: env.DIGITAL_OCEAN_CERT?.replace(/\\n/g, '\n'),
+	ca: env.DATABASE_CERT?.replace(/\\n/g, '\n'),
 };
 
 const pool = new Pool({

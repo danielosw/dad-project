@@ -4,7 +4,10 @@ if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not set");
 
 const databaseUrl = new URL(process.env.DATABASE_URL);
 
-
+const ssl = {
+	rejectUnauthorized: true, // You can safely set this to true once the cert loads
+	ca: process.env.DATABASE_CERT?.replace(/\\n/g, '\n'),
+};
 export default defineConfig({
 	schema: ["./src/lib/server/db/schema.ts"],
 	dialect: "postgresql",
@@ -15,10 +18,7 @@ export default defineConfig({
 		user: decodeURIComponent(databaseUrl.username),
 		password: decodeURIComponent(databaseUrl.password),
 		database: databaseUrl.pathname.replace(/^\//, ''),
-		ssl: {
-			ca: process.env.DIGITAL_OCEAN_CERT,
-			rejectUnauthorized: true
-		}
+		ssl: ssl
 	},
 	verbose: true,
 	strict: false,
